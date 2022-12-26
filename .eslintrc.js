@@ -1,6 +1,5 @@
 module.exports = {
     root: true,
-    ignorePatterns: ['**/*'],
     plugins: ['@nrwl/nx'],
     overrides: [
         {
@@ -29,6 +28,16 @@ module.exports = {
         {
             files: ['*.js', '*.jsx'],
             extends: ['plugin:@nrwl/nx/javascript'],
+            rules: {}
+        },
+        {
+            files: ['packages/front-end/**/*.{ts,tsx,js,jsx}'],
+            extends: ['plugin:@nrwl/nx/react'],
+            rules: {}
+        },
+        {
+            files: ['packages/front-end-e2e/**/*.{ts,tsx,js,jsx}'],
+            extends: ['plugin:cypress/recommended'],
             rules: {}
         }
     ]
