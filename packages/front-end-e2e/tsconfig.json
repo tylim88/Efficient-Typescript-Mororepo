@@ -1,10 +1,8 @@
 {
-    "extends": "../../tsconfig.base.json",
+    "extends": "../../tsconfig.cypress.json",
     "compilerOptions": {
-        "sourceMap": false,
-        "outDir": "../../dist/out-tsc",
-        "allowJs": true,
-        "types": []
+        "baseUrl": "src",
+        "outDir": "../../dist/front-end-e2e"
     },
     "include": ["src/**/*.ts", "src/**/*.js", "cypress.config.ts"]
 }

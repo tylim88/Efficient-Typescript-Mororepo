@@ -1,9 +1,8 @@
 {
     "compilerOptions": {
-        "outDir": "../../dist/out-tsc"
+        "baseUrl": "src",
+        "outDir": "../../dist/front-end"
     },
-    "files": [],
-    "include": [],
     "references": [
         {
             "path": "./tsconfig.app.json"
@@ -12,5 +11,5 @@
             "path": "./tsconfig.spec.json"
         }
     ],
-    "extends": "../../tsconfig.base.json"
+    "extends": "../../tsconfig.react.json"
 }
