@@ -3,7 +3,6 @@
         "jsx": "react-jsx",
         "jsxImportSource": "@emotion/react",
         "types": ["vite/client", "vitest", "vitest/globals", "node"],
-        "composite": true,
         "declaration": true
     },
     "extends": "./tsconfig.json"
