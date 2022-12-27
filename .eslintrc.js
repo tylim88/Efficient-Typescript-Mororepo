@@ -1,6 +1,7 @@
 module.exports = {
     root: true,
     plugins: ['@nrwl/nx'],
+    ignorePatterns: ['dist'],
     overrides: [
         {
             files: ['*.ts', '*.tsx', '*.js', '*.jsx'],
