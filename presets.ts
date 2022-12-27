@@ -26,7 +26,12 @@ export const vitePreset = {
 }
 
 nxPreset.transform['^.+\\.(ts|js|html)$'] = 'babel-jest'
-export const jestNodePreset = {
+
+const jestPreset = {
     ...nxPreset,
-    testEnvironment: 'node'
+    coverageReporters: ['clover', 'json', 'lcov', 'text'],
+    collectCoverage: true,
+    collectCoverageFrom: ['**/*.{js,jsx,ts,tsx}']
 }
+
+export const jestNodePreset = { ...jestPreset, testEnvironment: 'node' }
