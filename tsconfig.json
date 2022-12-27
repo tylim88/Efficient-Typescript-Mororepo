@@ -23,7 +23,10 @@
         "paths": {
             "*": ["*"]
         },
-        "types": ["node"]
+        "types": ["node"],
+        "noEmit": true,
+        "resolveJsonModule": true,
+        "isolatedModules": true
     },
     "exclude": ["node_modules", "tmp"]
 }
