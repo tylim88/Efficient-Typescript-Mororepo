@@ -1,6 +1,6 @@
 module.exports = {
     root: true,
-    plugins: ['@nrwl/nx'],
+    plugins: ['@nrwl/nx', 'unused-imports'],
     extends: [
         'plugin:prettier/recommended',
         'plugin:json/recommended',
@@ -22,6 +22,21 @@ module.exports = {
                                 onlyDependOnLibsWithTags: ['*']
                             }
                         ]
+                    }
+                ],
+                'no-console': [
+                    process.env.CI ? 'error' : 'warn',
+                    { allow: ['warn', 'error', 'info'] }
+                ],
+                'no-unused-vars': 'off',
+                'unused-imports/no-unused-imports': 'warn',
+                'unused-imports/no-unused-vars': [
+                    'warn',
+                    {
+                        vars: 'all',
+                        varsIgnorePattern: '^_',
+                        args: 'after-used',
+                        argsIgnorePattern: '^_'
                     }
                 ]
             }
