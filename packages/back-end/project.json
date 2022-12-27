@@ -45,7 +45,6 @@
             "outputs": ["{options.outputFile}"],
             "options": {
                 "fix": true,
-
                 "lintFilePatterns": ["packages/back-end/**/*.ts"]
             }
         },
