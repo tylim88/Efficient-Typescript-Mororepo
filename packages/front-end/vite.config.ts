@@ -1,26 +1,6 @@
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
-import viteTsConfigPaths from 'vite-tsconfig-paths';
+import { defineConfig } from 'vite'
+import { vitePreset } from '../../preset'
 
-export default defineConfig({
-  server: {
-    port: 4200,
-    host: 'localhost',
-  },
+vitePreset.server.port = 4200
 
-  plugins: [
-    react(),
-    viteTsConfigPaths({
-      root: '../../',
-    }),
-  ],
-
-  test: {
-    globals: true,
-    cache: {
-      dir: '../../node_modules/.vitest',
-    },
-    environment: 'jsdom',
-    include: ['src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
-  },
-});
+export default defineConfig(vitePreset)
