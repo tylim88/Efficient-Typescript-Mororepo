@@ -3,7 +3,5 @@
         "types": ["cypress", "node"],
         "isolatedModules": false
     },
-    "files": [],
-    "include": [],
-    "extends": "./tsconfig.json"
+    "extends": "./tsconfig.base.json"
 }
