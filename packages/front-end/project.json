@@ -49,6 +49,7 @@
             "executor": "@nrwl/linter:eslint",
             "outputs": ["{options.outputFile}"],
             "options": {
+                "fix": true,
                 "lintFilePatterns": ["packages/front-end/**/*.{ts,tsx,js,jsx}"]
             }
         }
