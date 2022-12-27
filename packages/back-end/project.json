@@ -1,0 +1,60 @@
+{
+    "name": "back-end",
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
+    "sourceRoot": "packages/back-end/src",
+    "projectType": "application",
+    "targets": {
+        "build": {
+            "executor": "@nrwl/webpack:webpack",
+            "outputs": ["{options.outputPath}"],
+            "options": {
+                "target": "node",
+                "compiler": "tsc",
+                "outputPath": "dist/packages/back-end",
+                "main": "packages/back-end/src/main.ts",
+                "tsConfig": "packages/back-end/tsconfig.app.json",
+                "assets": ["packages/back-end/src/assets"]
+            },
+            "configurations": {
+                "production": {
+                    "optimization": true,
+                    "extractLicenses": true,
+                    "inspect": false,
+                    "fileReplacements": [
+                        {
+                            "replace": "packages/back-end/src/environments/environment.ts",
+                            "with": "packages/back-end/src/environments/environment.prod.ts"
+                        }
+                    ]
+                }
+            }
+        },
+        "serve": {
+            "executor": "@nrwl/js:node",
+            "options": {
+                "buildTarget": "back-end:build"
+            },
+            "configurations": {
+                "production": {
+                    "buildTarget": "back-end:build:production"
+                }
+            }
+        },
+        "lint": {
+            "executor": "@nrwl/linter:eslint",
+            "outputs": ["{options.outputFile}"],
+            "options": {
+                "lintFilePatterns": ["packages/back-end/**/*.ts"]
+            }
+        },
+        "test": {
+            "executor": "@nrwl/jest:jest",
+            "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+            "options": {
+                "jestConfig": "packages/back-end/jest.config.ts",
+                "passWithNoTests": true
+            }
+        }
+    },
+    "tags": []
+}
