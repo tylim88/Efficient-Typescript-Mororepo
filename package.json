@@ -15,11 +15,11 @@
         "lint": "nx run-many --target=lint",
         "divider3": "=============================lint======================================",
         "lint-ci": "cross-env CI=true npm run lint",
-        "quick": "pretty-quick --staged",
+        "pretty-quick": "pretty-quick --staged",
         "pre-commit": "lint-staged"
     },
     "lint-staged": {
-        "*.{js,jsx,ts,tsx}": "cross-env CI=true eslint --fix"
+        "*.{js,jsx,ts,tsx,md,json}": "cross-env CI=true eslint --fix"
     },
     "private": true,
     "devDependencies": {
@@ -54,7 +54,9 @@
         "eslint-config-prettier": "8.1.0",
         "eslint-plugin-cypress": "^2.10.3",
         "eslint-plugin-import": "2.26.0",
+        "eslint-plugin-json": "^3.1.0",
         "eslint-plugin-jsx-a11y": "6.6.1",
+        "eslint-plugin-markdown": "^3.0.0",
         "eslint-plugin-prettier": "^4.2.1",
         "eslint-plugin-react": "7.31.11",
         "eslint-plugin-react-hooks": "4.6.0",

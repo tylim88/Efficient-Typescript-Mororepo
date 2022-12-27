@@ -1,7 +1,11 @@
 module.exports = {
     root: true,
     plugins: ['@nrwl/nx'],
-    extends: ['plugin:prettier/recommended'],
+    extends: [
+        'plugin:prettier/recommended',
+        'plugin:json/recommended',
+        'plugin:markdown/recommended'
+    ],
     ignorePatterns: ['dist'],
     overrides: [
         {
