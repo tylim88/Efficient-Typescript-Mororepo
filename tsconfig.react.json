@@ -1,8 +1,7 @@
 {
     "compilerOptions": {
         "jsx": "react-jsx",
-        "jsxImportSource": "@emotion/react",
-        "types": ["vite/client", "vitest", "vitest/globals", "node"]
+        "jsxImportSource": "@emotion/react"
     },
     "files": [],
     "include": [],
