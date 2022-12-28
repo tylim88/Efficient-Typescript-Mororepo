@@ -67,7 +67,7 @@ npm run e2e
 
 ## How I Choose The Tools
 
-I carefully selected these technologies with a focus on improving developer experience, ensuring type safety, and promoting code and configuration reusability. I believe that using this setup will help us build software that is more maintainable and has a longer lifespan.
+I carefully selected these technologies with a focus on improving developer experience, ensuring type safety, and promoting clean code. I also refined the configurations to maximize reusability. I believe that using this setup will help us build software that is more maintainable and has a longer lifespan.
 
 The following are the four qualities that I consider when choosing tools (with the most important at the top):
 
@@ -110,18 +110,22 @@ These are tools that I highly recommend but feel free to choose alternatives for
 8. Emotion: The technology behind Mantine, it has a similar API to styled-components.
 
 9. PostgreSQL: PostgreSQL is a reliable, free, and open-source SQL database. It is widely considered one of the best SQL databases and works well with Prisma. It is important to use a database that is supported by Prisma to ensure type safety.
-
+   1
 10. tRPC: If you use Zod, tRPC is a natural choice for your server and client. It also works well in monorepos, although it is not as flexible as other client and server technologies when it comes to integration with different repository structures.
 
 11. Cypress: I don't have an opinion on this technology as I am not familiar with front-end testing. However, I may learn more about it in the future.
 
-## Reuse Configuration
+## Reusing Configuration
 
 I try to reuse configuration as much as possible to reduce total configuration files needed to make the maintenance easier, this section explains how I reuse the configuration
 
-1. Eslint: only one `.eslintrc.js` in root, applies to all file. You can apply different rule to individual file or folder using the `override` field, so you don't need more than one configuration file.
-2. Prettier: only one `.prettierrc.js` and one `.prettierignore` in root, applies to all files.
-3. Babel:
+1. Eslint: There is only one .eslintrc.js file in the root directory, which applies to all files. You can apply different rules to individual files or folders using the override.files field, so you don't need more than one configuration file. Each time you generate a new project, simply add the path to override.files.
+
+2. Prettier: There is only one .prettierrc.js file and one .prettierignore file in the root directory, which apply to all files.
+
+3. Vite: Each project should have one vite.config.ts file that imports a preset from vite.presets.ts in the root directory.
+
+4. Typescript: There are two TS config files in the root directory: tsconfig.base.json extends tsconfig.json to reset the include and files fields (to avoid [this error](https://github.com/microsoft/TypeScript/issues/49844)). Each project extends tsconfig.base.json. TS configuration is a bit special and may require additional TS config files in the root directory because all path values in TS config become relative to where it is extended to.
 
 ## Conclusion
 

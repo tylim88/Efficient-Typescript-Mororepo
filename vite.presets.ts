@@ -8,11 +8,9 @@ type config = {
 
 const vitePreset = ({
     port,
-    environment,
-    plugins
+    environment
 }: {
     environment: NonNullable<NonNullable<UserConfig['test']>['environment']>
-    plugins: NonNullable<UserConfig['plugins']>
 } & config) =>
     defineConfig({
         server: {
@@ -24,8 +22,7 @@ const vitePreset = ({
             react(),
             viteTsConfigPaths({
                 root: '../../'
-            }),
-            ...plugins
+            })
         ],
 
         test: {
@@ -42,7 +39,7 @@ const vitePreset = ({
     })
 
 export const viteReactPreset = ({ port }: config) =>
-    vitePreset({ port, environment: 'jsdom', plugins: react() })
+    vitePreset({ port, environment: 'jsdom' })
 
 export const viteNodePreset = ({ port }: config) =>
-    vitePreset({ port, environment: 'node', plugins: [] })
+    vitePreset({ port, environment: 'node' })
