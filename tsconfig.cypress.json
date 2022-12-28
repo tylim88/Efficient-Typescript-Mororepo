@@ -1,7 +1,6 @@
 {
     "compilerOptions": {
-        "types": ["cypress", "node"],
-        "isolatedModules": false
+        "types": ["node"]
     },
     "extends": "./tsconfig.base.json"
 }
