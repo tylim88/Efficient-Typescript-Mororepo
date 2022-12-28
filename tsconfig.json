@@ -23,7 +23,7 @@
         "paths": {
             "*": ["*"]
         },
-        "types": ["node"],
+        "types": ["vite/client", "vitest", "vitest/globals", "node"],
         "noEmit": true,
         "resolveJsonModule": true,
         "isolatedModules": true

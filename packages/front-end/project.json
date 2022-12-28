@@ -37,20 +37,19 @@
                 }
             }
         },
-        "test": {
-            "executor": "@nrwl/vite:test",
-            "outputs": ["{projectRoot}/coverage"],
-            "options": {
-                "passWithNoTests": true,
-                "reportsDirectory": "{workspaceRoot}/coverage/{projectRoot}"
-            }
-        },
         "lint": {
             "executor": "@nrwl/linter:eslint",
             "outputs": ["{options.outputFile}"],
             "options": {
                 "fix": true,
                 "lintFilePatterns": ["packages/front-end/**/*.{ts,tsx,js,jsx}"]
+            }
+        },
+        "test": {
+            "executor": "@nrwl/vite:test",
+            "outputs": ["{projectRoot}/coverage"],
+            "options": {
+                "reportsDirectory": "../../coverage/front-end"
             }
         }
     },

@@ -1,6 +1,3 @@
-import { defineConfig } from 'vite'
-import { vitePreset } from '../../presets'
+import { viteReactPreset } from '../../presets'
 
-vitePreset.server.port = 4200
-
-export default defineConfig(vitePreset)
+export default viteReactPreset({ port: 4200, projectName: 'front-end' })

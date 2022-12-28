@@ -1,37 +1,48 @@
 import react from '@vitejs/plugin-react'
 import viteTsConfigPaths from 'vite-tsconfig-paths'
-import nxPreset from '@nrwl/jest/preset'
+import { defineConfig, UserConfig } from 'vite'
 
-export const vitePreset = {
-    server: {
-        port: 4200,
-        host: 'localhost'
-    },
+type config = {
+    port: number
+}
 
-    plugins: [
-        react(),
-        viteTsConfigPaths({
-            root: '../../'
-        })
-    ],
-
-    test: {
-        globals: true,
-        cache: {
-            dir: '../../node_modules/.vitest'
+const vitePreset = ({
+    port,
+    environment,
+    plugins
+}: {
+    environment: NonNullable<NonNullable<UserConfig['test']>['environment']>
+    plugins: NonNullable<UserConfig['plugins']>
+} & config) =>
+    defineConfig({
+        server: {
+            port,
+            host: 'localhost'
         },
-        environment: 'jsdom',
-        include: ['src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}']
-    }
-}
 
-nxPreset.transform['^.+\\.(ts|js|html)$'] = 'babel-jest'
+        plugins: [
+            react(),
+            viteTsConfigPaths({
+                root: '../../'
+            }),
+            ...plugins
+        ],
 
-const jestPreset = {
-    ...nxPreset,
-    coverageReporters: ['clover', 'json', 'lcov', 'text'],
-    collectCoverage: true,
-    collectCoverageFrom: ['**/*.{js,jsx,ts,tsx}']
-}
+        test: {
+            passWithNoTests: true,
+            globals: true,
+            cache: {
+                dir: '../../node_modules/.vitest'
+            },
+            environment,
+            coverage: {
+                enabled: true
+            }
+        }
+    })
 
-export const jestNodePreset = { ...jestPreset, testEnvironment: 'node' }
+export const viteReactPreset = ({ port }: config) =>
+    vitePreset({ port, environment: 'jsdom', plugins: react() })
+
+export const viteNodePreset = ({ port }: config) =>
+    vitePreset({ port, environment: 'node', plugins: [] })
