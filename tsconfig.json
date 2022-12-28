@@ -26,7 +26,9 @@
         "types": ["vite/client", "vitest", "vitest/globals", "node"],
         "noEmit": true,
         "resolveJsonModule": true,
-        "isolatedModules": true
+        "isolatedModules": true,
+        "jsx": "react-jsx",
+        "jsxImportSource": "@emotion/react"
     },
     "exclude": ["node_modules", "tmp", "jest"]
 }

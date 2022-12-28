@@ -1,8 +1,7 @@
 {
-    "extends": "../../tsconfig.cypress.json",
+    "extends": "../../tsconfig.base.json",
     "compilerOptions": {
-        "baseUrl": "src",
-        "outDir": "../../dist/front-end-e2e"
+        "baseUrl": "src"
     },
     "include": ["src/**/*.ts", "src/**/*.js", "cypress.config.ts"]
 }
