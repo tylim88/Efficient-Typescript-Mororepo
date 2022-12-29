@@ -1,5 +1,35 @@
 {
-    "extends": "./tsconfig.json",
+    "compileOnSave": false,
+    "compilerOptions": {
+        "strict": true,
+        "rootDir": ".",
+        "sourceMap": true,
+        "declaration": false,
+        "exactOptionalPropertyTypes": true,
+        "noUncheckedIndexedAccess": true,
+        "moduleResolution": "node",
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "importHelpers": true,
+        "target": "es2015",
+        "module": "esnext",
+        "lib": ["es2017", "dom"],
+        "skipLibCheck": true,
+        "skipDefaultLibCheck": true,
+        "baseUrl": ".",
+        "allowJs": false,
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
+        "paths": {
+            "*": ["*"]
+        },
+        "types": ["vite/client", "vitest", "vitest/globals", "node"],
+        "noEmit": true,
+        "resolveJsonModule": true,
+        "isolatedModules": true,
+        "jsx": "react-jsx",
+        "jsxImportSource": "@emotion/react"
+    },
     "files": [],
     "include": []
 }

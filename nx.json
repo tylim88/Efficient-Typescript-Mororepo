@@ -36,7 +36,7 @@
             "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
             "!{projectRoot}/tsconfig.spec.json",
             "!{projectRoot}/.eslintrc.json",
-            "!{projectRoot}/jest.config.[jt]s"
+            "!{projectRoot}/vite.config.[jt]s"
         ],
         "sharedGlobals": ["{workspaceRoot}/babel.config.json"]
     },

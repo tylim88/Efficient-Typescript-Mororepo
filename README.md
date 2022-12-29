@@ -127,7 +127,7 @@ To reduce the number of configuration files and make maintenance easier, it is i
 
 3. Vite: Each project should have one `vite.config.ts` file that imports a preset from vite.presets.ts in the root directory.
 
-4. Typescript: There are two TS config files in the root directory: tsconfig.base.json extends tsconfig.json to reset the `include` and `files` fields (to avoid [this error](https://github.com/microsoft/TypeScript/issues/49844)). Each project extends `tsconfig.base.json`. TS configuration is a bit special and may require additional TS config files in the root directory because all path values in TS config become relative to where it is extended to.
+4. Typescript: There are two TS config files in the root directory: `tsconfig.base.json` responsible for basic configuration and does not specify any files or folders to include (to avoid [this error](https://github.com/microsoft/TypeScript/issues/49844)); `tsconfig.json` extends `tsconfig.base.json` and specifies the root directory as the location to include TypeScript files. Each project then extends `tsconfig.base.json`. TS configuration is a bit special and may require additional TS config files in the root directory because all path values in TS config become relative to where it is extended to.
 
 ## Conclusion
 

@@ -3,5 +3,5 @@
     "compilerOptions": {
         "baseUrl": "src"
     },
-    "include": ["src/**/*.ts", "src/**/*.js", "cypress.config.ts"]
+    "include": ["**/*.ts", "**/*.js"]
 }
