@@ -67,7 +67,7 @@ npm run e2e
 
 ## How Tools are Chosen
 
-The selection of these technologies has been carefully considered, with an emphasis on enhancing the developer experience, ensuring type safety, and promoting clean code. The configurations have also been optimized for reusability. The use of this setup is expected to lead to software that is more maintainable and has a longer lifespan.
+The selection of these technologies has been carefully considered, with an emphasis on enhancing the developer experience, ensuring type safety, and promoting code and configurations reusability. The use of this setup is expected to lead to software that is more maintainable and has a longer lifespan.
 
 When choosing tools, the following four qualities are considered in this order of importance:
 
@@ -139,10 +139,6 @@ Project `A` only requires type `A` and not `B` and `C`, but `B` and `C` are stil
 
 As long as it does not cause any issues, it is acceptable to include uncommon settings.
 
-## Conclusion
+## Final Thoughts
 
-I hope this repository serves as a helpful starting point for your web development project. Using the technologies listed above can help you improve developer experience, ensure type safety, and promote code and configuration reusability.
-
-```
-
-```
+I hope this repository serves as a helpful starting point for your web development project and bring you the joy of development. The technologies listed above can help improve developer experience, ensure type safety, and promote code and configuration reusability. If you have any feedback, please don't hesitate to open an issue.
