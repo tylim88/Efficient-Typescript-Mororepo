@@ -23,8 +23,8 @@ Prisma for generating a type-safe database access layer
 Vitest for unit and integration testing
 Cypress for end-to-end testing  
 Emotion for styling components using CSS-in-JS
-Mantine for providing a library of customizable and reusable UI components
-Zustand for simple React state management
+Mantine for providing a library of customizable and reusable UI components  
+Zustand for simple React state management  
 SWC for compiling and bundling Javascript/Typescript
 
 ## Getting Started
@@ -65,67 +65,65 @@ To run end-to-end tests, use the following command:
 npm run e2e
 ```
 
-## How I Choose The Tools
+## How Tools are Chosen
 
-I carefully selected these technologies with a focus on improving developer experience, ensuring type safety, and promoting clean code. I also refined the configurations to maximize reusability. I believe that using this setup will help us build software that is more maintainable and has a longer lifespan.
+The selection of these technologies has been carefully considered, with an emphasis on enhancing the developer experience, ensuring type safety, and promoting clean code. The configurations have also been optimized for reusability. The use of this setup is expected to lead to software that is more maintainable and has a longer lifespan.
 
-The following are the four qualities that I consider when choosing tools (with the most important at the top):
+When choosing tools, the following four qualities are considered in this order of importance:
 
-1. Type safety: Type safety is essential for scaling code. It also comes with benefits such as autocompletion and documentation, and can serve as a "single source of truth" by keeping everyone in sync. Type safety can also reduce the need for unnecessary conditional statements and the corresponding tests.
+1. Type safety: Type safety is crucial for scaling code. It also brings benefits such as autocompletion and documentation, and can serve as a "single source of truth" by keeping everyone in sync. Type safety can also eliminate the need for unnecessary conditional statements and the corresponding tests.
 
 2. Ease of use: There are an infinite number of technologies to learn, but everyone only has 24 hours per day. It is important to choose tools that are easy to learn, easy to discard, and easy to relearn in order to respect developers' time.
 
-3. Functionality: I prioritize ease of use over functionality because more powerful tools often have a higher learning cost than their simpler counterparts. For example, GraphQL is more powerful than REST, but requires more effort to learn and may not be necessary for many use cases. REST is often sufficient for most applications.
+3. Functionality: Ease of use is prioritized over functionality because more powerful tools often have a higher learning cost than their simpler counterparts. For example, GraphQL is more powerful than REST, but may require more effort to learn and may not be necessary for many use cases. REST is often sufficient for most applications.
 
 4. Performance: While performance is important, it should not be the top priority if you do not have a functional product. That being said, many of the tools mentioned in this list are known for their fast performance compared to alternatives.
 
-## Core Techs
+## Core Technologies
 
-I will not discuss technologies such as Docker, ESLint, Prettier, and TypeScript, as they are staple tech choices at this point. These are the techs that play long-term roles in development, including folder structuring (Nx), API design (Zod), and database interaction (Prisma).
+Technologies such as Docker, ESLint, Prettier, and TypeScript are not discussed here, as they are considered standard choices at this point. The following technologies play long-term roles in development, including folder structuring (Nx), API design (Zod), and database interaction (Prisma):
 
-1. Nx: At the time of writing, Nx is a superior choice to Turbo Repo. Although Turbo Repo is written in a faster language, Nx is still faster and has more functionality, including a dependency graph and an integrated repository. Nx also has a larger and more mature community. The lack of an integrated repository is a significant drawback for Turbo Repo, while Nx's integrated repository makes it better for code reuse and maintenance.
+1. Nx: At present, Nx is a superior choice to Turbo Repo. While Turbo Repo is written in a faster language, Nx is still faster and has more functionality, including a dependency graph and an integrated repository. Nx also has a larger and more mature community. The absence of an integrated repository is a significant drawback for Turbo Repo, while Nx's integrated repository makes it better for code reuse and maintenance.
 
-2. Zod: There are many validation libraries available, but Zod stands out with its easy-to-use API and type inference approach. It combines validation and API schema into one, becoming the heart of your API design. It is a bit slow, however, and may not be suitable for parsing large amounts of data.
+2. Zod: There are many validation libraries available, but Zod stands out with its user-friendly API and type inference approach. It combines validation and API schema into one, making it the heart of your API design. Zod is a bit slow, however, and may not be suitable for parsing large amounts of data.
 
-3. Prisma: Prisma is the ORM (Object-Relational Mapper) with the best type safety. However, I am not a fan of the schema-first approach because it adds cognitive cost (the need to learn a schema language). I prefer a code-first approach, specifically a type-first approach (using types as a schema).
+3. Prisma: Prisma is the ORM with the best type safety. (That being said, I am not a fan of the schema-first approach because it adds cognitive cost (the need to learn a schema language). I prefer a code-first approach, specifically a type-first approach (using types as schemas)).
 
 ## Replaceable Techs
 
-These are tools that I highly recommend but feel free to choose alternatives for the following technologies:
+The following are tools that I highly recommend, but you are free to choose alternatives:
 
 1. Vite: A fast development build tool that utilizes ESM to outperform Create React App (Webpack) in the development environment.
 
-2. Vitest: Easier to configure and has a very fast watch mode compared to Jest. Additionally, its API is similar to Jest, making it a good choice for those familiar with Jest.
+2. Vitest: Easier to configure and featuring a very fast watch mode compared to Jest, with an API similar to Jest for those familiar with the library.
 
-3. SWC: A lightning-fast JS/TS compiler written in Rust
+3. SWC: A lightning-fast JS/TS compiler written in Rust.
 
-4. GitHub Actions: A clean and easy-to-use UI for automating tasks. It is also hosted by the same company that hosts your code, making it faster.
+4. GitHub Actions: A clean and easy-to-use UI for automating tasks, hosted by the same company as your code for faster performance.
 
-5. React: React is not the best UI library, but it has the best TypeScript support and a large community with plenty of resources.
+5. React: While not the best UI library, React has excellent TypeScript support and a large community with plenty of resources.
 
-6. Mantine: A well-designed React UI library with a modern API and great documentation. It offers a wide range of components and useful hooks. Highly recommended.
+6. Mantine: A well-designed React UI library with a modern API and great documentation, offering a wide range of components and useful hooks. Highly recommended.
 
-7. Zustand: A simple state management library that is easy to use.
+7. Zustand: A simple and easy-to-use state management library.
 
-8. Emotion: The technology behind Mantine, it has a similar API to styled-components.
+8. Emotion: The technology behind Mantine, with a similar API to styled-components.
 
-9. PostgreSQL: PostgreSQL is a reliable, free, and open-source SQL database. It is widely considered one of the best SQL databases and works well with Prisma. It is important to use a database that is supported by Prisma to ensure type safety.
-   1
+9. PostgreSQL: A reliable, free, and open-source SQL database, widely considered one of the best and working well with Prisma. It is important to use a database supported by Prisma to ensure type safety.
+
 10. tRPC: If you use Zod, tRPC is a natural choice for your server and client. It also works well in monorepos, although it is not as flexible as other client and server technologies when it comes to integration with different repository structures.
-
-11. Cypress: I don't have an opinion on this technology as I am not familiar with front-end testing. However, I may learn more about it in the future.
 
 ## Reusing Configuration
 
-I try to reuse configuration as much as possible to reduce total configuration files needed to make the maintenance easier, this section explains how I reuse the configuration
+To reduce the number of configuration files and make maintenance easier, it is important to reuse configuration as much as possible. Here's how configuration is reused in this setup:
 
-1. Eslint: There is only one .eslintrc.js file in the root directory, which applies to all files. You can apply different rules to individual files or folders using the override.files field, so you don't need more than one configuration file. Each time you generate a new project, simply add the path to override.files.
+1. Eslint: There is only one `.eslintrc.js` file in the root directory, which applies to all files. The `override.files` field can be used to apply different rules to individual files or folders, so there is no need for additional configuration files. When generating a new project, simply add its path to `override.files`.
 
-2. Prettier: There is only one .prettierrc.js file and one .prettierignore file in the root directory, which apply to all files.
+2. Prettier: There is only one `.prettierrc.js` file and one .prettierignore file in the root directory, which apply to all files.
 
-3. Vite: Each project should have one vite.config.ts file that imports a preset from vite.presets.ts in the root directory.
+3. Vite: Each project should have one `vite.config.ts` file that imports a preset from vite.presets.ts in the root directory.
 
-4. Typescript: There are two TS config files in the root directory: tsconfig.base.json extends tsconfig.json to reset the include and files fields (to avoid [this error](https://github.com/microsoft/TypeScript/issues/49844)). Each project extends tsconfig.base.json. TS configuration is a bit special and may require additional TS config files in the root directory because all path values in TS config become relative to where it is extended to.
+4. Typescript: There are two TS config files in the root directory: tsconfig.base.json extends tsconfig.json to reset the `include` and `files` fields (to avoid [this error](https://github.com/microsoft/TypeScript/issues/49844)). Each project extends `tsconfig.base.json`. TS configuration is a bit special and may require additional TS config files in the root directory because all path values in TS config become relative to where it is extended to.
 
 ## Conclusion
 
