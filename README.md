@@ -8,10 +8,6 @@ A minimal, optimal setup for modern web development projects using TypeScript.
 
 This repo uses the following tech stack:
 
-## Technologies
-
-This repo uses the following tech stack:
-
 [Nx](https://nx.dev/) for managing and building monorepo applications  
 [Docker](https://www.docker.com/) for containerizing the application and its dependencies  
 [GitHub Actions](https://github.com/features/actions) for automating the build and deployment process  
@@ -101,7 +97,7 @@ The following are tools that I highly recommend, but you are free to choose alte
 
 2. Vitest: Easier to configure and featuring a very fast watch mode compared to Jest, with an API similar to Jest for those familiar with the library.
 
-3. SWC: A lightning-fast JS/TS compiler written in Rust. It can run scripts without requiring any configuration, unlike Babel.
+3. SWC: A lightning-fast JS/TS compiler written in Rust. It can run TS scripts out of the box, unlike Babel.
 
 4. GitHub Actions: A clean and easy-to-use UI for automating tasks, hosted by the same company as your code for faster performance.
 
@@ -129,6 +125,24 @@ To reduce the number of configuration files and make maintenance easier, it is i
 
 4. Typescript: There are two TS config files in the root directory: `tsconfig.base.json` responsible for basic configuration and does not specify any files or folders to include (to avoid [this error](https://github.com/microsoft/TypeScript/issues/49844)); `tsconfig.json` extends `tsconfig.base.json` and specifies the root directory as the location to include TypeScript files. Each project then extends `tsconfig.base.json`. TS configuration is a bit special and may require additional TS config files in the root directory because all path values in TS config become relative to where it is extended to.
 
+Common settings are added as much as possible and as close to the root as possible, even if they are not applicable to all projects. For example, the base TS configuration includes the following:
+
+```json
+{
+    "compilerOptions": {
+        "types": ["A", "B", "C"]
+    }
+}
+```
+
+Project `A` only requires type `A` and not `B` and `C`, but `B` and `C` are still added. This is done to reduce maintenance requirements. Without these additional settings, the TS config of Project `A` would need to be modified if type `A` is no longer needed or if type `B` is now required.
+
+As long as it does not cause any issues, it is acceptable to include uncommon settings.
+
 ## Conclusion
 
 I hope this repository serves as a helpful starting point for your web development project. Using the technologies listed above can help you improve developer experience, ensure type safety, and promote code and configuration reusability.
+
+```
+
+```

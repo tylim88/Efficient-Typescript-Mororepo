@@ -1,45 +1,39 @@
 import react from '@vitejs/plugin-react'
 import viteTsConfigPaths from 'vite-tsconfig-paths'
-import { defineConfig, UserConfig } from 'vite'
+import { defineConfig, mergeConfig, UserConfigExport } from 'vite'
 
-type config = {
-    port: number
-}
-
-const vitePreset = ({
-    port,
-    environment
-}: {
-    environment: NonNullable<NonNullable<UserConfig['test']>['environment']>
-} & config) =>
-    defineConfig({
-        server: {
-            port,
-            host: 'localhost'
-        },
-
-        plugins: [
-            react(),
-            viteTsConfigPaths({
-                root: '../../'
-            })
-        ],
-
-        test: {
-            passWithNoTests: true,
-            globals: true,
-            cache: {
-                dir: '../../node_modules/.vitest'
+const vitePreset = (config?: UserConfigExport) =>
+    mergeConfig(
+        defineConfig({
+            server: {
+                host: 'localhost'
             },
-            environment,
-            coverage: {
-                enabled: true
+
+            plugins: [
+                react(),
+                viteTsConfigPaths({
+                    root: '../../'
+                })
+            ],
+
+            test: {
+                passWithNoTests: true,
+                globals: true,
+                cache: {
+                    dir: '../../node_modules/.vitest'
+                },
+                coverage: {
+                    enabled: true
+                }
             }
-        }
+        }),
+        defineConfig(config || {})
+    )
+
+export const viteJsDomPreset = ({ port }: { port: number }) =>
+    vitePreset({
+        server: { port },
+        test: { environment: 'jsdom' }
     })
 
-export const viteReactPreset = ({ port }: config) =>
-    vitePreset({ port, environment: 'jsdom' })
-
-export const viteNodePreset = ({ port }: config) =>
-    vitePreset({ port, environment: 'node' })
+export const viteNodePreset = vitePreset

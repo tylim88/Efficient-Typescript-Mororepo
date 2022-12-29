@@ -1,0 +1,17 @@
+{
+    "name": "jsdom-libraries",
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
+    "sourceRoot": "packages/jsdom-libraries/src",
+    "projectType": "library",
+    "targets": {
+        "test": {
+            "executor": "@nrwl/vite:test",
+            "outputs": ["{projectRoot}/coverage"],
+            "options": {
+                "passWithNoTests": true,
+                "reportsDirectory": "{workspaceRoot}/coverage/{projectRoot}"
+            }
+        }
+    },
+    "tags": []
+}
