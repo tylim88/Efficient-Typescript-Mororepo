@@ -29,13 +29,17 @@ This repo uses the following tech stack:
 
 ## Getting Started
 
-To get started with this repository, after you clone it, install the dependencies:
+To get started with this repository, clone the repository and install the dependencies:
 
 ```bash
-npm run setup
+git clone https://github.com/tylim88/Typescript-Monorepo-Template.git && cd Typescript-Monorepo-Template && npm run setup
 ```
 
-Then, start the development server:
+After that follow this [Youtube guide](https://youtu.be/w1-GiB74ddc?t=17) to create an access token. However, instead of placing the access token in `nx.json` as shown in the video, add it to the `nx-cloud.env` file, as described in the [official guide](https://nx.dev/nx-cloud/account/access-tokens#using-).
+
+### Development
+
+To run in development:
 
 ```bash
 npm run dev
@@ -43,15 +47,15 @@ npm run dev
 
 This will start the development server and open the application in your default browser.
 
-## Build
+### Build
 
-To build the application, run the following command:
+To build all projects, run the following command:
 
 ```bash
 npm run build
 ```
 
-## Testing
+### Testing
 
 To run unit and integration tests, use the following command:
 
@@ -63,6 +67,14 @@ To run end-to-end tests, use the following command:
 
 ```bash
 npm run e2e
+```
+
+### Linting
+
+To run linting for with the option to fix and prettify, use the following command:
+
+```bash
+npm run lint
 ```
 
 ## How Tools are Chosen
@@ -156,9 +168,11 @@ There are 4 projects template, with fine-tuned and simplified configuration:
 4. `react-app-e2e`: for React app e2e.
 5. `node-app`: for back end, non-buildable.
 
+All templates include commands for linting and type checking.
+
 The TypeScript and Vitest configurations for each template are extensively simplified without sacrificing functionality. In most cases, only the base configuration files need to be modified.
 
-Remember to change the project name - a search and replace function can accurately replace all instances of the name
+Remember to change the project name - a search and replace function can accurately replace all instances of the name.
 
 ## Final Thoughts
 
