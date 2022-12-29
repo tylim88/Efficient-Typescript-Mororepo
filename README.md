@@ -139,12 +139,26 @@ Project `A` only requires type `A` and not `B` and `C`, but `B` and `C` are stil
 
 As long as it does not cause any issues, including uncommon settings in the base configuration can help improve maintenance and make our development process more efficient. If necessary, we can create additional configuration files to extend from the base configuration.
 
-To summarize, the key to low maintenance configuration files is to:
+To summarize, the key to maintaining low maintenance configuration files is to refactor them as follows:
 
-1. Keep base files as close to the root directory as possible
-2. Include as many settings as possible in the base files
-3. If issues arise, create additional configuration files to extend the base configuration as needed
-4. You may need multiple sub-base files in the root directory, each targeting a specific project type.
+1. Keep the base files as close to the root directory as possible.
+2. Include as many settings as possible in the base files.
+3. If issues arise, create additional configuration files to extend the base configuration as needed.
+4. In some cases, multiple sub-base files in the root directory may be required, each targeting a specific project type.
+
+## Project Templates
+
+There are 4 projects template, with fine-tuned and simplified configuration:
+
+1. `node-libraries`: non-publishable and non-buildable.
+2. `jsdom-libraries`: same as `node-libraries`, but specifically for code that manipulates the DOM.
+3. `react-app`: for React app.
+4. `react-app-e2e`: for React app e2e.
+5. `node-app`: for back end, non-buildable.
+
+The TypeScript and Vitest configurations for each template are extensively simplified without sacrificing functionality. In most cases, only the base configuration files need to be modified.
+
+Remember to change the project name - a search and replace function can accurately replace all instances of the name
 
 ## Final Thoughts
 
