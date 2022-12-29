@@ -1,4 +1,4 @@
-# Mororepo Template
+# Typescript Mororepo Template
 
 A minimal, optimal setup for modern web development projects using TypeScript.
 
@@ -137,7 +137,14 @@ Common settings are added as much as possible and as close to the root as possib
 
 Project `A` only requires type `A` and not `B` and `C`, but `B` and `C` are still added. This is done to reduce maintenance requirements. Without these additional settings, the TS config of Project `A` would need to be modified if type `A` is no longer needed or if type `B` is now required.
 
-As long as it does not cause any issues, it is acceptable to include uncommon settings.
+As long as it does not cause any issues, including uncommon settings in the base configuration can help improve maintenance and make our development process more efficient. If necessary, we can create additional configuration files to extend from the base configuration.
+
+To summarize, the key to low maintenance configuration files is to:
+
+1. Keep base files as close to the root directory as possible
+2. Include as many settings as possible in the base files
+3. If issues arise, create additional configuration files to extend the base configuration as needed
+4. You may need multiple sub-base files in the root directory, each targeting a specific project type.
 
 ## Final Thoughts
 
