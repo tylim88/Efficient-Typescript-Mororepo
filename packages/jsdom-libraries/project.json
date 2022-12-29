@@ -4,12 +4,20 @@
     "sourceRoot": "packages/jsdom-libraries/src",
     "projectType": "library",
     "targets": {
+        "lint": {
+            "executor": "@nrwl/linter:eslint",
+            "outputs": ["{options.outputFile}"],
+            "options": {
+                "fix": true,
+                "lintFilePatterns": ["packages/react-app/**/*.{ts,tsx,js,jsx}"]
+            }
+        },
         "test": {
             "executor": "@nrwl/vite:test",
             "outputs": ["{projectRoot}/coverage"],
             "options": {
                 "passWithNoTests": true,
-                "reportsDirectory": "{workspaceRoot}/coverage/{projectRoot}"
+                "reportsDirectory": "../../coverage/jsdom-libraries"
             }
         }
     },
