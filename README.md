@@ -8,24 +8,28 @@ A minimal, optimal setup for modern web development projects using TypeScript.
 
 This repo uses the following tech stack:
 
-Nx for managing and building monorepo applications  
-Docker for containerizing the application and its dependencies  
-GitHub Actions for automating the build and deployment process  
-TypeScript for static type checking and improved developer experience  
-React for building the user interface  
-Vite for fast development builds  
-ESLint for enforcing a consistent code style  
-Prettier for formatting code consistently  
-tRPC for simplifying the process of making server-side RPC calls  
-Zod for validating and manipulating input data in a type-safe manner  
-PostgreSQL for storing data persistently  
-Prisma for generating a type-safe database access layer  
-Vitest for unit and integration testing
-Cypress for end-to-end testing  
-Emotion for styling components using CSS-in-JS
-Mantine for providing a library of customizable and reusable UI components  
-Zustand for simple React state management  
-SWC for compiling and bundling Javascript/Typescript
+## Technologies
+
+This repo uses the following tech stack:
+
+[Nx](https://nx.dev/) for managing and building monorepo applications  
+[Docker](https://www.docker.com/) for containerizing the application and its dependencies  
+[GitHub Actions](https://github.com/features/actions) for automating the build and deployment process  
+[TypeScript](https://www.typescriptlang.org/) for static type checking and improved developer experience  
+[React](https://reactjs.org/) for building the user interface  
+[Vite](https://vitejs.dev/) for fast development builds  
+[ESLint](https://eslint.org/) for enforcing a consistent code style  
+[Prettier](https://prettier.io/) for formatting code consistently  
+[tRPC](https://trpc.io/docs) for simplifying the process of making server-side RPC calls  
+[Zod](https://zod.dev/) for validating and manipulating input data in a type-safe manner  
+[PostgreSQL](https://www.postgresql.org/) for storing data persistently  
+[Prisma](https://www.prisma.io/) for generating a type-safe database access layer  
+[Vitest](https://vitest.org/) for unit and integration testing  
+[Cypress](https://www.cypress.io/) for end-to-end testing  
+[Emotion](https://emotion.sh/docs/introduction) for styling components using CSS-in-JS  
+[Mantine](https://mantine.dev/) for providing a library of customizable and reusable UI components  
+[Zustand](https://github.com/pmndrs/zustand) for simple React state management  
+[SWC](https://swc-project.github.io/) for compiling and bundling Javascript/Typescript
 
 ## Getting Started
 
@@ -97,7 +101,7 @@ The following are tools that I highly recommend, but you are free to choose alte
 
 2. Vitest: Easier to configure and featuring a very fast watch mode compared to Jest, with an API similar to Jest for those familiar with the library.
 
-3. SWC: A lightning-fast JS/TS compiler written in Rust.
+3. SWC: A lightning-fast JS/TS compiler written in Rust. It can run scripts without requiring any configuration, unlike Babel.
 
 4. GitHub Actions: A clean and easy-to-use UI for automating tasks, hosted by the same company as your code for faster performance.
 
