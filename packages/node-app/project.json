@@ -1,17 +1,17 @@
 {
-    "name": "back-end",
+    "name": "node-app",
     "$schema": "../../node_modules/nx/schemas/project-schema.json",
-    "sourceRoot": "packages/back-end/src",
+    "sourceRoot": "packages/node-app/src",
     "projectType": "application",
     "targets": {
         "serve": {
             "executor": "@nrwl/js:node",
             "options": {
-                "buildTarget": "back-end:build"
+                "buildTarget": "node-app:build"
             },
             "configurations": {
                 "production": {
-                    "buildTarget": "back-end:build:production"
+                    "buildTarget": "node-app:build:production"
                 }
             }
         },
@@ -20,14 +20,14 @@
             "outputs": ["{options.outputFile}"],
             "options": {
                 "fix": true,
-                "lintFilePatterns": ["packages/back-end/**/*.ts"]
+                "lintFilePatterns": ["packages/node-app/**/*.ts"]
             }
         },
         "test": {
             "executor": "@nrwl/vite:test",
             "outputs": ["{projectRoot}/coverage"],
             "options": {
-                "reportsDirectory": "../../coverage/back-end"
+                "reportsDirectory": "../../coverage/node-app"
             }
         }
     },

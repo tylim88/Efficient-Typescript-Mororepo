@@ -50,11 +50,11 @@ module.exports = {
             extends: ['plugin:@nrwl/nx/javascript']
         },
         {
-            files: ['packages/front-end/**/*.{ts,tsx,js,jsx}'],
+            files: ['packages/react-app/**/*.{ts,tsx,js,jsx}'],
             extends: ['plugin:@nrwl/nx/react']
         },
         {
-            files: ['packages/front-end-e2e/**/*.{ts,tsx,js,jsx}'],
+            files: ['packages/react-app-e2e/**/*.{ts,tsx,js,jsx}'],
             extends: ['plugin:cypress/recommended']
         }
     ]

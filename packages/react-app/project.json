@@ -1,7 +1,7 @@
 {
-    "name": "front-end",
+    "name": "react-app",
     "$schema": "../../node_modules/nx/schemas/project-schema.json",
-    "sourceRoot": "packages/front-end/src",
+    "sourceRoot": "packages/react-app/src",
     "projectType": "application",
     "targets": {
         "build": {
@@ -9,7 +9,7 @@
             "outputs": ["{options.outputPath}"],
             "defaultConfiguration": "production",
             "options": {
-                "outputPath": "dist/packages/front-end"
+                "outputPath": "dist/packages/react-app"
             },
             "configurations": {
                 "development": {
@@ -24,15 +24,15 @@
             "executor": "@nrwl/vite:dev-server",
             "defaultConfiguration": "development",
             "options": {
-                "buildTarget": "front-end:build"
+                "buildTarget": "react-app:build"
             },
             "configurations": {
                 "development": {
-                    "buildTarget": "front-end:build:development",
+                    "buildTarget": "react-app:build:development",
                     "hmr": true
                 },
                 "production": {
-                    "buildTarget": "front-end:build:production",
+                    "buildTarget": "react-app:build:production",
                     "hmr": false
                 }
             }
@@ -42,14 +42,14 @@
             "outputs": ["{options.outputFile}"],
             "options": {
                 "fix": true,
-                "lintFilePatterns": ["packages/front-end/**/*.{ts,tsx,js,jsx}"]
+                "lintFilePatterns": ["packages/react-app/**/*.{ts,tsx,js,jsx}"]
             }
         },
         "test": {
             "executor": "@nrwl/vite:test",
             "outputs": ["{projectRoot}/coverage"],
             "options": {
-                "reportsDirectory": "../../coverage/front-end"
+                "reportsDirectory": "../../coverage/react-app"
             }
         }
     },
