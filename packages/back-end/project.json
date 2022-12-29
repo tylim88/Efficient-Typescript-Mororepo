@@ -4,31 +4,6 @@
     "sourceRoot": "packages/back-end/src",
     "projectType": "application",
     "targets": {
-        "build": {
-            "executor": "@nrwl/webpack:webpack",
-            "outputs": ["{options.outputPath}"],
-            "options": {
-                "target": "node",
-                "compiler": "tsc",
-                "outputPath": "dist/packages/back-end",
-                "main": "packages/back-end/src/main.ts",
-                "tsConfig": "packages/back-end/tsconfig.app.json",
-                "assets": ["packages/back-end/src/assets"]
-            },
-            "configurations": {
-                "production": {
-                    "optimization": true,
-                    "extractLicenses": true,
-                    "inspect": false,
-                    "fileReplacements": [
-                        {
-                            "replace": "packages/back-end/src/environments/environment.ts",
-                            "with": "packages/back-end/src/environments/environment.prod.ts"
-                        }
-                    ]
-                }
-            }
-        },
         "serve": {
             "executor": "@nrwl/js:node",
             "options": {
