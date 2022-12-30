@@ -4,14 +4,14 @@ on:
     push:
         branches: ['main']
     pull_request:
-        types: [opened]
+        types: [opened, synchronize]
 jobs:
     build:
-        if: github.event_name == 'pull_request' && github.event.action == 'opened' || github.event_name == 'push' && github.event.head.merge == null
+        if: github.event.pull_request.merged == false
         runs-on: ubuntu-latest
         strategy:
             matrix:
-                node-version: [14.x, 16.x, 18.x]
+                node-version: [18.x]
         steps:
             - uses: actions/checkout@v3
             - uses: actions/setup-node@v3
