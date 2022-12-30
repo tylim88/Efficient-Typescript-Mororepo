@@ -4,12 +4,18 @@
     "sourceRoot": "packages/node-libraries/src",
     "projectType": "library",
     "targets": {
+        "type": {
+            "executor": "nx:run-commands",
+            "options": {
+                "command": "npx tsc -b packages/node-libraries/tsconfig.json"
+            }
+        },
         "lint": {
             "executor": "@nrwl/linter:eslint",
             "outputs": ["{options.outputFile}"],
             "options": {
                 "fix": true,
-                "lintFilePatterns": ["packages/react-app/**/*.{ts,tsx,js,jsx}"]
+                "lintFilePatterns": ["**/*.{ts,tsx,js,jsx}"]
             }
         },
         "test": {

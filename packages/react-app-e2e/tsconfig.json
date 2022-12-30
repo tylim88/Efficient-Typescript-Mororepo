@@ -1,7 +1,7 @@
 {
-    "extends": "../../tsconfig.base.json",
+    "extends": "../../tsconfig.cypress.json",
     "compilerOptions": {
         "baseUrl": "src"
     },
-    "include": ["**/*.ts", "**/*.js"]
+    "include": ["src/**/*.ts", "src/**/*.js"]
 }

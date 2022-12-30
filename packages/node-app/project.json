@@ -15,12 +15,18 @@
                 }
             }
         },
+        "type": {
+            "executor": "nx:run-commands",
+            "options": {
+                "command": "npx tsc -b packages/node-app/tsconfig.json"
+            }
+        },
         "lint": {
             "executor": "@nrwl/linter:eslint",
             "outputs": ["{options.outputFile}"],
             "options": {
                 "fix": true,
-                "lintFilePatterns": ["packages/node-app/**/*.ts"]
+                "lintFilePatterns": ["**/*.{ts,tsx,js,jsx}"]
             }
         },
         "test": {

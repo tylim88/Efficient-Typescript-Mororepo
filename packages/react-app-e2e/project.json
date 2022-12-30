@@ -17,12 +17,18 @@
                 }
             }
         },
+        "type": {
+            "executor": "nx:run-commands",
+            "options": {
+                "command": "npx tsc -b packages/react-app-e2e/tsconfig.json"
+            }
+        },
         "lint": {
             "executor": "@nrwl/linter:eslint",
             "outputs": ["{options.outputFile}"],
             "options": {
                 "fix": true,
-                "lintFilePatterns": ["packages/react-app-e2e/**/*.{js,ts}"]
+                "lintFilePatterns": ["**/*.{ts,tsx,js,jsx}"]
             }
         }
     },
