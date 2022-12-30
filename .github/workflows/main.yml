@@ -13,6 +13,19 @@ jobs:
             - uses: actions/setup-node@v3
               with:
                   node-version: ${{ matrix.node-version }}
+            - name: Cache node modules
+              id: cache-nodemodules
+              uses: actions/cache@v2
+              env:
+                  cache-name: cache-node-modules
+              with:
+                  # caching node_modules
+                  path: node_modules
+                  key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+                  restore-keys: |
+                      ${{ runner.os }}-build-${{ env.cache-name }}-
+                      ${{ runner.os }}-build-
+                      ${{ runner.os }}-
             - run: npm i
             - run: npm run lint-ci
             - run: npm run type
