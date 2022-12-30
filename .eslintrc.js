@@ -6,7 +6,7 @@ module.exports = {
         'plugin:json/recommended',
         'plugin:markdown/recommended'
     ],
-    ignorePatterns: ['dist'],
+    ignorePatterns: ['dist', 'templates'],
     overrides: [
         {
             files: ['**/*.{ts,tsx,js,jsx}'],
