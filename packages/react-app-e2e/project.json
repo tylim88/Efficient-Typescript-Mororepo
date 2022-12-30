@@ -20,7 +20,7 @@
         "type": {
             "executor": "nx:run-commands",
             "options": {
-                "command": "npx tsc -b packages/react-app-e2e/tsconfig.json"
+                "command": "tsc -b packages/react-app-e2e/tsconfig.json"
             }
         },
         "lint": {

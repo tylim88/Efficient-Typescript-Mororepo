@@ -7,7 +7,7 @@
         "type": {
             "executor": "nx:run-commands",
             "options": {
-                "command": "npx tsc -b packages/jsdom-libraries/tsconfig.json"
+                "command": "tsc -b packages/jsdom-libraries/tsconfig.json"
             }
         },
         "lint": {

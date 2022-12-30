@@ -40,7 +40,7 @@
         "type": {
             "executor": "nx:run-commands",
             "options": {
-                "command": "npx tsc -b packages/react-app/tsconfig.json"
+                "command": "tsc -b packages/react-app/tsconfig.json"
             }
         },
         "lint": {
