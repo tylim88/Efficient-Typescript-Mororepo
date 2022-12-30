@@ -12,27 +12,27 @@ This repo uses the following tech stack:
 [Docker](https://www.docker.com/) for containerizing the application and its dependencies  
 [GitHub Actions](https://github.com/features/actions) for automating the build and deployment process  
 [TypeScript](https://www.typescriptlang.org/) for static type checking and improved developer experience  
-[React](https://reactjs.org/) for building the user interface  
 [Vite](https://vitejs.dev/) for fast development builds  
+[Vitest](https://vitest.org/) for unit and integration testing  
 [ESLint](https://eslint.org/) for enforcing a consistent code style  
 [Prettier](https://prettier.io/) for formatting code consistently  
-[tRPC](https://trpc.io/docs) for simplifying the process of making server-side RPC calls  
 [Zod](https://zod.dev/) for validating and manipulating input data in a type-safe manner  
-[PostgreSQL](https://www.postgresql.org/) for storing data persistently  
+[tRPC](https://trpc.io/docs) for simplifying the process of making server-side RPC calls  
 [Prisma](https://www.prisma.io/) for generating a type-safe database access layer  
-[Vitest](https://vitest.org/) for unit and integration testing  
-[Cypress](https://www.cypress.io/) for end-to-end testing  
-[Emotion](https://emotion.sh/docs/introduction) for styling components using CSS-in-JS  
-[Mantine](https://mantine.dev/) for providing a library of customizable and reusable UI components  
-[Zustand](https://github.com/pmndrs/zustand) for simple React state management  
+[PostgreSQL](https://www.postgresql.org/) for storing data persistently  
 [SWC](https://swc-project.github.io/) for compiling and bundling Javascript/Typescript
+[React](https://reactjs.org/) for building the user interface  
+[Zustand](https://github.com/pmndrs/zustand) for simple React state management  
+[Mantine](https://mantine.dev/) for providing a library of customizable and reusable UI components  
+[Emotion](https://emotion.sh/docs/introduction) for styling components using CSS-in-JS  
+[Cypress](https://www.cypress.io/) for end-to-end testing
 
 ## Getting Started
 
-To get started with this repository, clone the repository and install the dependencies:
+To get started with this repository, install the dependencies:
 
 ```bash
-git clone https://github.com/tylim88/Typescript-Monorepo-Template.git && cd Typescript-Monorepo-Template && npm run setup
+npm run setup
 ```
 
 After that follow this [Youtube guide](https://youtu.be/w1-GiB74ddc?t=17) to create an access token. However, instead of placing the access token in `nx.json` as shown in the video, add it to the `nx-cloud.env` file, as described in the [official guide](https://nx.dev/nx-cloud/account/access-tokens#using-).
@@ -49,7 +49,7 @@ This will start the development server and open the application in your default 
 
 ### Build
 
-To build all projects, run the following command:
+To build, run the following command:
 
 ```bash
 npm run build
@@ -71,7 +71,7 @@ npm run e2e
 
 ### Linting
 
-To run linting for with the option to fix and prettify, use the following command:
+To run linting with fix and prettify, use the following command:
 
 ```bash
 npm run lint
@@ -131,13 +131,18 @@ To reduce the number of configuration files and make maintenance easier, it is i
 
 1. Eslint: There is only one `.eslintrc.js` file in the root directory, which applies to all files. The `override.files` field can be used to apply different rules to individual files or folders, so there is no need for additional configuration files. When generating a new project, simply add its path to `override.files`.
 
-2. Prettier: There is only one `.prettierrc.js` file and one .prettierignore file in the root directory, which apply to all files.
+2. Prettier: There is only one `.prettierrc.js` file and one `.prettierignore` file in the root directory, which apply to all files.
 
-3. Vite: Each project should have one `vite.config.ts` file that imports a preset from vite.presets.ts in the root directory.
+3. Vite: Each project should have one `vite.config.ts` file that imports a preset from `vite.presets.ts` in the root directory.
 
-4. Typescript: There are two TS config files in the root directory: `tsconfig.base.json` responsible for basic configuration and does not specify any files or folders to include (to avoid [this error](https://github.com/microsoft/TypeScript/issues/49844)); `tsconfig.json` extends `tsconfig.base.json` and specifies the root directory as the location to include TypeScript files. Each project then extends `tsconfig.base.json`. TS configuration is a bit special and may require additional TS config files in the root directory because all path values in TS config become relative to where it is extended to.
+4. There are three TS config files in the root directory:
+   i. `tsconfig.base.json`: responsible for basic configuration and does not participate in any compilation. It is extended by the root directory and most projects.
+   ii. `tsconfig.json`: extends `tsconfig.base.json` and is responsible for files in the root directory (does not include subdirectories). It compiles but does not emit.
+   iii. `tsconfig.cypress.json`: extends `tsconfig.base.json` and is used by `Cypress` projects. Unlike other projects that directly extend `tsconfig.base.json`, `Cypress` TS config requires additional refactoring due to conflicts with the types of the more widely used `Vitest`.
 
-Common settings are added as much as possible and as close to the root as possible, even if they are not applicable to all projects. For example, the base TS configuration includes the following:
+### Common Settings
+
+Common settings are added as much as possible and as close to the root as possible, even if they are not applicable to all projects. For example, assuming the base TS configuration includes the following:
 
 ```json
 {
@@ -160,7 +165,7 @@ To summarize, the key to maintaining low maintenance configuration files is to r
 
 ## Project Templates
 
-There are 4 projects template, with fine-tuned and simplified configuration:
+There are 5 projects template, with fine-tuned and simplified configuration:
 
 1. `node-libraries`: non-publishable and non-buildable.
 2. `jsdom-libraries`: same as `node-libraries`, but specifically for code that manipulates the DOM.
