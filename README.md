@@ -135,10 +135,10 @@ To reduce the number of configuration files and make maintenance easier, it is i
 
 3. Vite: Each project should have one `vite.config.ts` file that imports a preset from `vite.presets.ts` in the root directory.
 
-4. There are three TS config files in the root directory:
-   i. `tsconfig.base.json`: responsible for basic configuration and does not participate in any compilation. It is extended by the root directory and most projects.
-   ii. `tsconfig.json`: extends `tsconfig.base.json` and is responsible for files in the root directory (does not include subdirectories). It compiles but does not emit.
-   iii. `tsconfig.cypress.json`: extends `tsconfig.base.json` and is used by `Cypress` projects. Unlike other projects that directly extend `tsconfig.base.json`, `Cypress` TS config requires additional refactoring due to conflicts with the types of the more widely used `Vitest`.
+4. There are three TS config files in the root directory:  
+   i. `tsconfig.base.json`: responsible for basic configuration and does not participate in any compilation. It is extended by the root directory and most projects.  
+   ii. `tsconfig.json`: extends `tsconfig.base.json` and is responsible for files in the root directory (does not include subdirectories). It compiles but does not emit.  
+   iii. `tsconfig.cypress.json`: extends `tsconfig.base.json` and is used by Cypress projects. Unlike other projects that directly extend `tsconfig.base.json`, Cypress TS config requires additional refactoring due to conflicts with the types of the more widely used `Vitest`.
 
 ### Common Settings
 
@@ -161,7 +161,7 @@ To summarize, the key to maintaining low maintenance configuration files is to r
 1. Keep the base files as close to the root directory as possible.
 2. Include as many settings as possible in the base files.
 3. If issues arise, create additional configuration files to extend the base configuration as needed.
-4. In some cases, multiple sub-base files in the root directory may be required, each targeting a specific project type.
+4. In some cases, multiple sub-base files in the root directory may be required, each targeting a specific project type (e.g.: `tsconfig.cypress.json`).
 
 ## Project Templates
 
