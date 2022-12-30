@@ -77,6 +77,14 @@ To run linting with fix and prettify, use the following command:
 npm run lint
 ```
 
+### Type Check
+
+To run type check, use the following command:
+
+```bash
+npm run type
+```
+
 ## How Tools are Chosen
 
 The selection of these technologies has been carefully considered, with an emphasis on enhancing the developer experience, ensuring type safety, and promoting code and configurations reusability. The use of this setup is expected to lead to software that is more maintainable and has a longer lifespan.
@@ -129,7 +137,7 @@ The following are tools that I highly recommend, but you are free to choose alte
 
 To reduce the number of configuration files and make maintenance easier, it is important to reuse configuration as much as possible. Here's how configuration is reused in this setup:
 
-1. Eslint: There is only one `.eslintrc.js` file in the root directory, which applies to all files. The `override.files` field can be used to apply different rules to individual files or folders, so there is no need for additional configuration files. When generating a new project, simply add its path to `override.files`.
+1. ESLint: There is only one `.eslintrc.js` file in the root directory, which applies to all files. The `override.files` field can be used to apply different rules to individual files or folders, so there is no need for additional configuration files. When generating a new project, simply add its path to `override.files`.
 
 2. Prettier: There is only one `.prettierrc.js` file and one `.prettierignore` file in the root directory, which apply to all files.
 
@@ -163,9 +171,9 @@ To summarize, the key to maintaining low maintenance configuration files is to r
 3. If issues arise, create additional configuration files to extend the base configuration as needed.
 4. In some cases, multiple sub-base files in the root directory may be required, each targeting a specific project type (e.g.: `tsconfig.cypress.json`).
 
-## Project Templates
+## Using Project Templates
 
-There are five project templates, each with fine-tuned and simplified configurations:
+There are five project templates located in the `templates` folder, each with fine-tuned and simplified configurations:
 
 1. `node-libraries`: for general TypeScript/JavaScript libraries.
 2. `jsdom-libraries`: similar to `node-libraries`, but specifically for code that manipulates the DOM.
@@ -179,7 +187,43 @@ Only front end template(`react-app`) has a build command.
 
 The TypeScript and Vitest configurations for each template are extensively simplified without sacrificing functionality. In most cases, only the configuration files in root folder need to be modified.
 
-Remember to change the project name - a search and replace function can accurately replace all instances of the name.
+Instruction on how to use templates:
+
+### 1. Changing the Project Name
+
+After copying the template, use a search and replace function to accurately replace all instances of the name, but be sure to exclude the `templates` folder.
+
+Note: the `react-app-e2e` project's `project.json` file also has instances of the `react-app` name, so be sure to update those as well when replacing the `react-app` name.
+
+### 2. Updating the ESLint Configuration
+
+If the template is a `react-app` or `react-app-e2e`, update the existing `files` field in the appropriate ESLint `override` to include the path to the new project.
+
+For `react-app`:
+
+```json
+{
+    "files": [
+        "packages/my-react-app/**/*.{ts,tsx,js,jsx}",
+        "packages/my-other-react-app/**/*.{ts,tsx,js,jsx}"
+    ],
+    "extends": ["plugin:@nrwl/nx/react"]
+}
+```
+
+For `react-app-e2e`:
+
+```json
+{
+    "files": [
+        "packages/my-react-app-e2e/**/*.{ts,tsx,js,jsx}",
+        "packages/my-other-react-app-e2e/**/*.{ts,tsx,js,jsx}"
+    ],
+    "extends": ["plugin:cypress/recommended"]
+}
+```
+
+No action is required for the other templates.
 
 ## Final Thoughts
 
