@@ -1,4 +1,47 @@
-# Typescript Mororepo Template
+<!-- markdownlint-disable MD010 -->
+<!-- markdownlint-disable MD033 -->
+<!-- markdownlint-disable MD041 -->
+<div align="center">
+			<a
+				href="https://github.com/tylim88/Efficient-Typescript-Mororepo/blob/main/LICENSE"
+				target="_blank"
+			>
+				<img
+					src="https://img.shields.io/github/license/tylim88/Efficient-Typescript-Mororepo"
+					alt="License"
+				/>
+			</a>
+			&nbsp;
+			<a href="https://github.com/tylim88/Efficient-Typescript-Mororepo/actions" target="_blank">
+				<img
+					src="https://github.com/tylim88/Efficient-Typescript-Mororepo/workflows/CI/badge.svg"
+					alt="github action"
+				/>
+			</a>
+            &nbsp;
+			<a href="https://github.com/tylim88/Efficient-Typescript-Mororepo/actions" target="_blank">
+				<img
+					src="https://github.com/tylim88/Efficient-Typescript-Mororepo/workflows/CodeQL/badge.svg"
+					alt="github action"
+				/>
+			</a>
+			&nbsp;
+			<a href="https://github.com/tylim88/Efficient-Typescript-Mororepo/issues" target="_blank">
+				<img
+					alt="GitHub issues"
+					src="https://img.shields.io/github/issues-raw/tylim88/Efficient-Typescript-Mororepo"
+				></img>
+			</a>
+			&nbsp;
+			<a href="https://snyk.io/test/github/tylim88/Efficient-Typescript-Mororepo" target="_blank">
+				<img
+					src="https://snyk.io/test/github/tylim88/Efficient-Typescript-Mororepo/badge.svg"
+					alt="code coverage"
+				/>
+			</a>
+</div>
+
+# Efficient Typescript Mororepo
 
 A minimal, optimal setup for modern web development projects using TypeScript.
 
@@ -20,7 +63,7 @@ This repo uses the following tech stack:
 [tRPC](https://trpc.io/docs) for simplifying the process of making server-side RPC calls  
 [Prisma](https://www.prisma.io/) for generating a type-safe database access layer  
 [PostgreSQL](https://www.postgresql.org/) for storing data persistently  
-[SWC](https://swc-project.github.io/) for compiling and bundling Javascript/Typescript
+[SWC](https://swc-project.github.io/) for compiling and bundling Javascript/Typescript  
 [React](https://reactjs.org/) for building the user interface  
 [Zustand](https://github.com/pmndrs/zustand) for simple React state management  
 [Mantine](https://mantine.dev/) for providing a library of customizable and reusable UI components  
@@ -85,6 +128,62 @@ To run type check, use the following command:
 npm run type
 ```
 
+## Using Project Templates
+
+There are five project templates located in the `templates` folder, each with fine-tuned and simplified configurations:
+
+1. `node-libraries`: for general TypeScript/JavaScript libraries.
+2. `jsdom-libraries`: similar to `node-libraries`, but specifically for code that manipulates the DOM.
+3. `react-app`: for React applications.
+4. `react-app-e2e`: for end-to-end testing of React applications.
+5. `node-app`: for backend applications.
+
+All templates include commands for linting and type checking.
+
+Only front end template(`react-app`) has a build command.
+
+The TypeScript and Vitest configurations for each template are extensively simplified without sacrificing functionality. In most cases, only the configuration files in root folder need to be modified.
+
+Instruction on how to use templates:
+
+### 1. Changing the Project Name
+
+After copying the template, use a search and replace function to accurately replace all instances of the name, but be sure to exclude the `templates` folder.
+
+Note: the `react-app-e2e` project's `project.json` file also has instances of the `react-app` name, so be sure to update those as well when replacing the `react-app` name.
+
+### 2. Updating the ESLint Configuration
+
+If the template is a `react-app` or `react-app-e2e`, **update the existing** `files` field in the appropriate ESLint `override` to include the path to the new project.
+
+For `react-app`:
+
+```json
+{
+    "files": [
+        "packages/my-react-app/**/*.{ts,tsx,js,jsx}",
+        "packages/my-other-react-app/**/*.{ts,tsx,js,jsx}"
+    ],
+    "extends": ["plugin:@nrwl/nx/react"]
+}
+```
+
+For `react-app-e2e`:
+
+```json
+{
+    "files": [
+        "packages/my-react-app-e2e/**/*.{ts,tsx,js,jsx}",
+        "packages/my-other-react-app-e2e/**/*.{ts,tsx,js,jsx}"
+    ],
+    "extends": ["plugin:cypress/recommended"]
+}
+```
+
+No action is required for the other templates.
+
+## Developer Experience
+
 ## How Tools are Chosen
 
 The selection of these technologies has been carefully considered, with an emphasis on enhancing the developer experience, ensuring type safety, and promoting code and configurations reusability. The use of this setup is expected to lead to software that is more maintainable and has a longer lifespan.
@@ -143,10 +242,13 @@ To reduce the number of configuration files and make maintenance easier, it is i
 
 3. Vite: Each project should have one `vite.config.ts` file that imports a preset from `vite.presets.ts` in the root directory.
 
-4. There are three TS config files in the root directory:  
-   i. `tsconfig.base.json`: responsible for basic configuration and does not participate in any compilation. It is extended by the root directory and most projects.  
-   ii. `tsconfig.json`: extends `tsconfig.base.json` and is responsible for files in the root directory (does not include subdirectories). It compiles but does not emit.  
-   iii. `tsconfig.cypress.json`: extends `tsconfig.base.json` and is used by Cypress projects. Unlike other projects that directly extend `tsconfig.base.json`, Cypress TS config requires additional refactoring due to conflicts with the types of the more widely used Vitest.
+4. There are three TS config files in the root directory:
+
+    i. `tsconfig.base.json`: responsible for basic configuration and does not participate in any compilation. It is extended by the root directory and most projects.
+
+    ii. `tsconfig.json`: extends `tsconfig.base.json` and is responsible for files in the root directory (does not include subdirectories). It compiles but does not emit.
+
+    iii. `tsconfig.cypress.json`: extends `tsconfig.base.json` and is used by Cypress projects. Unlike other projects that directly extend `tsconfig.base.json`, Cypress TS config requires additional refactoring due to conflicts with the types of the more widely used Vitest.
 
 ### Common Settings
 
@@ -168,62 +270,8 @@ To summarize, the key to maintaining low maintenance configuration files is to r
 
 1. Keep the base files as close to the root directory as possible.
 2. Include as many settings as possible in the base files.
-3. If issues arise, create additional configuration files to extend the base configuration as needed.
-4. In some cases, multiple sub-base files in the root directory may be required, each targeting a specific project type (e.g.: `tsconfig.cypress.json`).
-
-## Using Project Templates
-
-There are five project templates located in the `templates` folder, each with fine-tuned and simplified configurations:
-
-1. `node-libraries`: for general TypeScript/JavaScript libraries.
-2. `jsdom-libraries`: similar to `node-libraries`, but specifically for code that manipulates the DOM.
-3. `react-app`: for React applications.
-4. `react-app-e2e`: for end-to-end testing of React applications.
-5. `node-app`: for backend applications.
-
-All templates include commands for linting and type checking.
-
-Only front end template(`react-app`) has a build command.
-
-The TypeScript and Vitest configurations for each template are extensively simplified without sacrificing functionality. In most cases, only the configuration files in root folder need to be modified.
-
-Instruction on how to use templates:
-
-### 1. Changing the Project Name
-
-After copying the template, use a search and replace function to accurately replace all instances of the name, but be sure to exclude the `templates` folder.
-
-Note: the `react-app-e2e` project's `project.json` file also has instances of the `react-app` name, so be sure to update those as well when replacing the `react-app` name.
-
-### 2. Updating the ESLint Configuration
-
-If the template is a `react-app` or `react-app-e2e`, update the existing `files` field in the appropriate ESLint `override` to include the path to the new project.
-
-For `react-app`:
-
-```json
-{
-    "files": [
-        "packages/my-react-app/**/*.{ts,tsx,js,jsx}",
-        "packages/my-other-react-app/**/*.{ts,tsx,js,jsx}"
-    ],
-    "extends": ["plugin:@nrwl/nx/react"]
-}
-```
-
-For `react-app-e2e`:
-
-```json
-{
-    "files": [
-        "packages/my-react-app-e2e/**/*.{ts,tsx,js,jsx}",
-        "packages/my-other-react-app-e2e/**/*.{ts,tsx,js,jsx}"
-    ],
-    "extends": ["plugin:cypress/recommended"]
-}
-```
-
-No action is required for the other templates.
+3. If issues arise, create additional configuration files to extend the base configuration as needed(e.g. `tsconfig.cypress.json`).
+4. In some cases, multiple sub-base files in the root directory may be required, each targeting a specific project type
 
 ## Final Thoughts
 
