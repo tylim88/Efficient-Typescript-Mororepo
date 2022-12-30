@@ -10,7 +10,7 @@
         "build": "rimraf dist && nx run-many --target=build",
         "test": "rimraf coverage && nx run-many --target=test",
         "lint": "nx run-many --target=lint",
-        "type": "rimraf dist && nx run-many --target=type",
+        "type": "rimraf out-tsc && nx run-many --target=type && rimraf out-tsc",
         "divider2": "=============================lint-staged======================================",
         "lint-ci": "cross-env CI=true npm run lint",
         "pretty-quick": "pretty-quick --staged",
