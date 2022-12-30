@@ -1,13 +1,9 @@
 name: CI
 
-on:
-    push:
-        branches: ['main']
-    pull_request:
-        types: [opened, synchronize]
+on: [push, pull_request]
+
 jobs:
     build:
-        if: github.event_name == 'pull_request' || (github.event_name == 'push' && !github.event.pull_request)
         runs-on: ubuntu-latest
         strategy:
             matrix:
