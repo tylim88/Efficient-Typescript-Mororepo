@@ -27,7 +27,7 @@ jobs:
                       ${{ runner.os }}-build-
                       ${{ runner.os }}-
             - run: npm i
-            - run: npm run lint-ci
+            - run: npm run lint
             - run: npm run type
             - run: npm run build
             - run: npm test

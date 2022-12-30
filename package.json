@@ -12,7 +12,6 @@
         "lint": "nx run-many --target=lint",
         "type": "rimraf out-tsc && nx run-many --target=type && rimraf out-tsc",
         "divider2": "=============================lint-staged======================================",
-        "lint-ci": "cross-env CI=true npm run lint",
         "pretty-quick": "pretty-quick --staged",
         "pre-commit": "lint-staged",
         "divider3": "=============================tools======================================",
