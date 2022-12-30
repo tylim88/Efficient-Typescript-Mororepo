@@ -7,7 +7,7 @@ on:
         types: [opened, synchronize]
 jobs:
     build:
-        if: github.event.pull_request.merged == false
+        if: github.event_name == 'pull_request' || github.event_name == 'push' && github.event.head.merge == null
         runs-on: ubuntu-latest
         strategy:
             matrix:
