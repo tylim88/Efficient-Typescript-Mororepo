@@ -78,7 +78,7 @@ To get started with this repository, install the dependencies:
 npm run setup
 ```
 
-After that follow this [Youtube guide](https://youtu.be/w1-GiB74ddc?t=17) to create an access token. However, instead of placing the access token in `nx.json` as shown in the video, add it to the `nx-cloud.env` file, as described in the [official guide](https://nx.dev/nx-cloud/account/access-tokens#using-).
+To create an access token, follow the steps outlined in this [YouTube guide](https://youtu.be/w1-GiB74ddc?t=17). Instead of adding the access token to the `nx.json` file as shown in the video, refer to the [official guide](https://nx.dev/nx-cloud/account/access-tokens#using-) for instructions on how to place the access token in the `nx-cloud.env` file and configure it in your CI environment.
 
 ### Development
 
