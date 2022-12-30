@@ -54,7 +54,7 @@ module.exports = {
             extends: ['plugin:@nrwl/nx/react']
         },
         {
-            files: ['packages/react-app-e2e/**/*.{ts,tsx,js,jsx}'],
+            files: ['packages/react-app-e2e/**/*.{ts,js}'],
             extends: ['plugin:cypress/recommended']
         }
     ]

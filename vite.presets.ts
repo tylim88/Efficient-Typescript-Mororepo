@@ -17,6 +17,7 @@ const vitePreset = (config?: UserConfigExport) =>
             ],
 
             test: {
+                environment: 'node',
                 passWithNoTests: true,
                 globals: true,
                 cache: {

@@ -5,13 +5,7 @@
         "default": {
             "runner": "@nrwl/nx-cloud",
             "options": {
-                "cacheableOperations": [
-                    "build",
-                    "lint",
-                    "test",
-                    "e2e",
-                    "type-check"
-                ]
+                "cacheableOperations": ["build", "lint", "test", "e2e", "type"]
             }
         }
     },
@@ -24,14 +18,10 @@
             "inputs": ["default", "^production"]
         },
         "test": {
-            "inputs": [
-                "default",
-                "^production",
-                "{workspaceRoot}/jest.preset.js"
-            ]
+            "inputs": ["default", "^production"]
         },
         "lint": {
-            "inputs": ["default", "{workspaceRoot}/.eslintrc.json"]
+            "inputs": ["default", "{workspaceRoot}/.eslintrc.js"]
         }
     },
     "namedInputs": {
@@ -40,7 +30,7 @@
             "default",
             "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
             "!{projectRoot}/tsconfig.spec.json",
-            "!{projectRoot}/.eslintrc.json",
+            "!{projectRoot}/.eslintrc.js",
             "!{projectRoot}/vite.config.[jt]s"
         ],
         "sharedGlobals": ["{workspaceRoot}/babel.config.json"]
