@@ -83,7 +83,7 @@ The selection of these technologies has been carefully considered, with an empha
 
 When choosing tools, the following four qualities are considered in this order of importance:
 
-1. Type safety: Type safety is crucial for scaling code. It also brings benefits such as autocompletion and documentation, and can serve as a "single source of truth" by keeping everyone in sync. Type safety can also eliminate the need for unnecessary conditional statements and the corresponding tests.
+1. Type safety: Type safety: Ensuring type safety is essential for code scaling. Types bring benefits such as autocompletion and intrinsic documentation, and can serve as a "single source of truth" by keeping everyone in sync. Type safety can also eliminate the need for unnecessary runtime type checks and corresponding tests, improving code efficiency and scalability.
 
 2. Ease of use: There are an infinite number of technologies to learn, but everyone only has 24 hours per day. It is important to choose tools that are easy to learn, easy to discard, and easy to relearn in order to respect developers' time.
 
@@ -165,17 +165,19 @@ To summarize, the key to maintaining low maintenance configuration files is to r
 
 ## Project Templates
 
-There are 5 projects template, with fine-tuned and simplified configuration:
+There are five project templates, each with fine-tuned and simplified configurations:
 
-1. `node-libraries`: non-publishable and non-buildable.
-2. `jsdom-libraries`: same as `node-libraries`, but specifically for code that manipulates the DOM.
-3. `react-app`: for React app.
-4. `react-app-e2e`: for React app e2e.
-5. `node-app`: for back end, non-buildable.
+1. `node-libraries`: for general TypeScript/JavaScript libraries.
+2. `jsdom-libraries`: similar to `node-libraries`, but specifically for code that manipulates the DOM.
+3. `react-app`: for React applications.
+4. `react-app-e2e`: for end-to-end testing of React applications.
+5. `node-app`: for backend applications.
 
 All templates include commands for linting and type checking.
 
-The TypeScript and Vitest configurations for each template are extensively simplified without sacrificing functionality. In most cases, only the base configuration files need to be modified.
+Only front end template(`react-app`) has a build command.
+
+The TypeScript and Vitest configurations for each template are extensively simplified without sacrificing functionality. In most cases, only the configuration files in root folder need to be modified.
 
 Remember to change the project name - a search and replace function can accurately replace all instances of the name.
 
