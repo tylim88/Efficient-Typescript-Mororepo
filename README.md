@@ -1,7 +1,10 @@
 <!-- markdownlint-disable MD010 -->
 <!-- markdownlint-disable MD033 -->
 <!-- markdownlint-disable MD041 -->
-<div align="center">
+
+# Efficient Typescript Mororepo
+
+<div align="left">
 			<a
 				href="https://github.com/tylim88/Efficient-Typescript-Mororepo/blob/main/LICENSE"
 				target="_blank"
@@ -32,17 +35,7 @@
 					src="https://img.shields.io/github/issues-raw/tylim88/Efficient-Typescript-Mororepo"
 				></img>
 			</a>
-			&nbsp;
-			<a href="https://snyk.io/test/github/tylim88/Efficient-Typescript-Mororepo" target="_blank">
-				<img
-					src="https://snyk.io/test/github/tylim88/Efficient-Typescript-Mororepo/badge.svg"
-					alt="code coverage"
-				/>
-			</a>
 </div>
-
-# Efficient Typescript Mororepo
-
 A minimal, optimal setup for modern web development projects using TypeScript.
 
 (still in development, do not use)
