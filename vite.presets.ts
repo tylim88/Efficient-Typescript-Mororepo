@@ -1,4 +1,4 @@
-import react from '@vitejs/plugin-react'
+import react from '@vitejs/plugin-react-swc'
 import viteTsConfigPaths from 'vite-tsconfig-paths'
 import { defineConfig, mergeConfig, UserConfigExport } from 'vite'
 
@@ -10,7 +10,7 @@ const vitePreset = (config?: UserConfigExport) =>
             },
 
             plugins: [
-                react(),
+                react({ jsxImportSource: '@emotion/react' }),
                 viteTsConfigPaths({
                     root: '../../'
                 })
