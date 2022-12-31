@@ -4,9 +4,10 @@ module.exports = {
     extends: [
         'plugin:prettier/recommended',
         'plugin:json/recommended',
-        'plugin:markdown/recommended'
+        'plugin:markdown/recommended',
+        'plugin:yml/standard'
     ],
-    ignorePatterns: ['dist', 'templates'],
+    ignorePatterns: ['dist', 'templates', 'out-tsc', 'coverage'],
     overrides: [
         {
             files: ['**/*.{ts,tsx,js,jsx}'],

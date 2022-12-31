@@ -26,7 +26,7 @@
             "outputs": ["{options.outputFile}"],
             "options": {
                 "fix": true,
-                "lintFilePatterns": ["**/*.{ts,tsx,js,jsx}"]
+                "lintFilePatterns": ["**/*.{ts,tsx,js,jsx,md,json,yml}"]
             }
         },
         "test": {

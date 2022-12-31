@@ -18,7 +18,7 @@
         "node": "node -r @swc-node/register someScript.ts"
     },
     "lint-staged": {
-        "*.{js,jsx,ts,tsx,md,json}": "cross-env CI=true eslint --fix"
+        "*.{js,jsx,ts,tsx,md,json,yml}": "cross-env CI=true eslint --fix"
     },
     "private": true,
     "devDependencies": {
@@ -59,6 +59,7 @@
         "eslint-plugin-react": "7.31.11",
         "eslint-plugin-react-hooks": "4.6.0",
         "eslint-plugin-unused-imports": "^2.0.0",
+        "eslint-plugin-yml": "^1.4.0",
         "jsdom": "~20.0.3",
         "lint-staged": "^13.1.0",
         "nx": "15.4.1",
