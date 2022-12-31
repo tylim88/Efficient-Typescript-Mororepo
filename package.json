@@ -5,16 +5,16 @@
     "scripts": {
         "divider": "=============================setup======================================",
         "setup": "(npx -y husky install || npx husky install) && npm i -D rimraf && rimraf package-lock.json && rimraf node_modules && npm i",
-        "divider1": "=============================run many======================================",
+        "divider1": "=============================run many==================================",
         "serve": "nx run-many --target=serve",
         "build": "rimraf dist && nx run-many --target=build",
         "test": "rimraf coverage && nx run-many --target=test",
         "lint": "nx run-many --target=lint",
         "type": "rimraf out-tsc && nx run-many --target=type && rimraf out-tsc",
-        "divider2": "=============================lint-staged======================================",
+        "divider2": "=============================lint-staged==============================",
         "pretty-quick": "pretty-quick --staged",
         "pre-commit": "lint-staged",
-        "divider3": "=============================tools======================================",
+        "divider3": "=============================tools===================================+",
         "node": "node -r @swc-node/register someScript.ts"
     },
     "lint-staged": {

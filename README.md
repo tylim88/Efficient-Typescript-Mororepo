@@ -65,13 +65,15 @@ This repo uses the following tech stack:
 
 ## Getting Started
 
-To get started with this repository, install the dependencies:
+To get started with this repository, first install the dependencies by running the following command:
 
 ```bash
 npm run setup
 ```
 
-To create an access token, follow the steps outlined in this [YouTube guide](https://youtu.be/w1-GiB74ddc?t=17). Instead of adding the access token to the `nx.json` file as shown in the video, refer to the [official guide](https://nx.dev/nx-cloud/account/access-tokens#using-) for instructions on how to place the access token in the `nx-cloud.env` file and configure it in your CI environment.
+You can use the same script to re-setup the repository at any time.
+
+Next, create an access token, follow the steps outlined in this [YouTube guide](https://youtu.be/w1-GiB74ddc?t=17). Instead of adding the access token to the `nx.json` file as shown in the video, refer to the [official guide](https://nx.dev/nx-cloud/account/access-tokens#using-) for instructions on how to place the access token in the `nx-cloud.env` file and configure it in your CI environment.
 
 ### Development
 
@@ -85,7 +87,7 @@ This will start the development server and open the application in your default 
 
 ### Build
 
-To build, run the following command:
+To build:
 
 ```bash
 npm run build
@@ -93,13 +95,13 @@ npm run build
 
 ### Testing
 
-To run unit and integration tests, use the following command:
+To run unit and integration tests:
 
 ```bash
 npm test
 ```
 
-To run end-to-end tests, use the following command:
+To run end-to-end tests:
 
 ```bash
 npm run e2e
@@ -107,7 +109,7 @@ npm run e2e
 
 ### Linting
 
-To run linting with fix and prettify, use the following command:
+To run linting with fix and Prettier:
 
 ```bash
 npm run lint
@@ -115,7 +117,7 @@ npm run lint
 
 ### Type Check
 
-To run type check, use the following command:
+To run type check:
 
 ```bash
 npm run type
@@ -290,6 +292,11 @@ This section provides an in-depth look at the out-of-the-box configurations:
 6. Ability to import and resolve JSON types.
 7. Add the type `undefined` when using an index to access an array or object where the key type is `string`.
 8. Prevent the assignment of `undefined` to types with optional modifiers, unless the optional type explicitly unions with `undefined`.
+
+### 3. GitHub Actions
+
+1. Caches node modules to improve build performance.
+2. Ready for multi-OS and multi-node version strategy to ensure compatibility across different environments.
 
 ## Final Thoughts
 
