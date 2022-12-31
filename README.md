@@ -14,26 +14,33 @@
 					alt="License"
 				/>
 			</a>
-			&nbsp;
+		&nbsp;
 			<a href="https://github.com/tylim88/Efficient-Typescript-Mororepo/actions" target="_blank">
 				<img
 					src="https://github.com/tylim88/Efficient-Typescript-Mororepo/workflows/CI/badge.svg"
 					alt="github action"
 				/>
 			</a>
-            &nbsp;
+        &nbsp;
 			<a href="https://github.com/tylim88/Efficient-Typescript-Mororepo/actions" target="_blank">
 				<img
 					src="https://github.com/tylim88/Efficient-Typescript-Mororepo/workflows/CodeQL/badge.svg"
 					alt="github action"
 				/>
 			</a>
-			&nbsp;
+		&nbsp;
 			<a href="https://github.com/tylim88/Efficient-Typescript-Mororepo/issues" target="_blank">
 				<img
 					alt="GitHub issues"
 					src="https://img.shields.io/github/issues-raw/tylim88/Efficient-Typescript-Mororepo"
 				></img>
+			</a>
+		&nbsp;
+			<a href="https://snyk.io/test/github/tylim88/Efficient-Typescript-Mororepo" target="_blank">
+				<img
+					src="https://snyk.io/test/github/tylim88/Efficient-Typescript-Mororepo/badge.svg"
+					alt="code coverage"
+				/>
 			</a>
 </div>
 A minimal, optimal setup for modern web development projects using TypeScript.
@@ -53,7 +60,7 @@ This repo uses the following tech stack:
 [ESLint](https://eslint.org/) for enforcing a consistent code style  
 [Prettier](https://prettier.io/) for formatting code consistently  
 [Zod](https://zod.dev/) for validating and manipulating input data in a type-safe manner  
-[tRPC](https://trpc.io/docs) for simplifying the process of making server-side RPC calls  
+[tRPC](https://trpc.io/docs) for end-to-end typesafe APIs
 [Prisma](https://www.prisma.io/) for generating a type-safe database access layer  
 [PostgreSQL](https://www.postgresql.org/) for storing data persistently  
 [SWC](https://swc-project.github.io/) for compiling and bundling Javascript/Typescript  
@@ -65,9 +72,11 @@ This repo uses the following tech stack:
 
 ## Getting Started
 
-To get started with this repository, first install the dependencies by running the following command:
+To get started with this repository, first clone and install the dependencies:
 
 ```bash
+git clone https://github.com/tylim88/Efficient-Typescript-Mororepo.git
+cd Efficient-Typescript-Mororepo
 npm run setup
 ```
 
@@ -183,7 +192,7 @@ The selection of these technologies has been carefully considered, with an empha
 
 When choosing tools, the following four qualities are considered in this order of importance:
 
-1. Type safety: Type safety: Ensuring type safety is essential for code scaling. Types bring benefits such as autocompletion and intrinsic documentation, and can serve as a "single source of truth" by keeping everyone in sync. Type safety can also eliminate the need for unnecessary runtime type checks and corresponding tests, improving code efficiency and scalability.
+1. Type safety: Ensuring type safety is essential for code scaling. Types bring benefits such as autocompletion and intrinsic documentation, and can serve as a "single source of truth" by keeping everyone in sync. Type safety can also eliminate the need for unnecessary runtime type checks and corresponding tests, improving code efficiency and scalability.
 
 2. Ease of use: There are an infinite number of technologies to learn, but everyone only has 24 hours per day. It is important to choose tools that are easy to learn, easy to discard, and easy to relearn in order to respect developers' time.
 
