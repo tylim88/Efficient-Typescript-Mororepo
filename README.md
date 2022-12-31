@@ -175,8 +175,6 @@ For `react-app-e2e`:
 
 No action is required for the other templates.
 
-## Developer Experience
-
 ## How Tools are Chosen
 
 The selection of these technologies has been carefully considered, with an emphasis on enhancing the developer experience, ensuring type safety, and promoting code and configurations reusability. The use of this setup is expected to lead to software that is more maintainable and has a longer lifespan.
@@ -237,15 +235,15 @@ To reduce the number of configuration files and make maintenance easier, it is i
 
 4. There are three TS config files in the root directory:
 
-    i. `tsconfig.base.json`: responsible for basic configuration and does not participate in any compilation. It is extended by the root directory and most projects.
+    - `tsconfig.base.json`: responsible for basic configuration and does not participate in any compilation. It is extended by the root directory and most projects.
 
-    ii. `tsconfig.json`: extends `tsconfig.base.json` and is responsible for files in the root directory (does not include subdirectories). It compiles but does not emit.
+    - `tsconfig.json`: extends `tsconfig.base.json` and is responsible for files in the root directory (does not include subdirectories). It compiles but does not emit.
 
-    iii. `tsconfig.cypress.json`: extends `tsconfig.base.json` and is used by Cypress projects. Unlike other projects that directly extend `tsconfig.base.json`, Cypress TS config requires additional refactoring due to conflicts with the types of the more widely used Vitest.
+    - `tsconfig.cypress.json`: extends `tsconfig.base.json` and is used by Cypress projects. Unlike other projects that directly extend `tsconfig.base.json`, Cypress TS config requires additional refactoring due to conflicts with the types of the more widely used Vitest.
 
-### Common Settings
+### Common configs
 
-Common settings are added as much as possible and as close to the root as possible, even if they are not applicable to all projects. For example, assuming the base TS configuration includes the following:
+Common configs are added as much as possible and as close to the root as possible, even if they are not applicable to all projects. For example, assuming the base TS configuration includes the following:
 
 ```json
 {
@@ -255,16 +253,43 @@ Common settings are added as much as possible and as close to the root as possib
 }
 ```
 
-Project `A` only requires type `A` and not `B` and `C`, but `B` and `C` are still added. This is done to reduce maintenance requirements. Without these additional settings, the TS config of Project `A` would need to be modified if type `A` is no longer needed or if type `B` is now required.
+Project `A` only requires type `A` and not `B` and `C`, but `B` and `C` are still added. This is done to reduce maintenance requirements. Without these additional configs, the TS config of Project `A` would need to be modified if type `A` is no longer needed or if type `B` is now required.
 
-As long as it does not cause any issues, including uncommon settings in the base configuration can help improve maintenance and make our development process more efficient. If necessary, we can create additional configuration files to extend from the base configuration.
+As long as it does not cause any issues, including uncommon configs in the base configuration can help improve maintenance and make our development process more efficient. If necessary, we can create additional configuration files to extend from the base configuration.
 
 To summarize, the key to maintaining low maintenance configuration files is to refactor them as follows:
 
 1. Keep the base files as close to the root directory as possible.
-2. Include as many settings as possible in the base files.
+2. Include as many configs as possible in the base files.
 3. If issues arise, create additional configuration files to extend the base configuration as needed(e.g. `tsconfig.cypress.json`).
-4. In some cases, multiple sub-base files in the root directory may be required, each targeting a specific project type
+4. In some cases, multiple sub-base files in the root directory may be required, each targeting a specific project type.
+
+## Configuration Details
+
+This section provides an in-depth look at the out-of-the-box configurations:
+
+### 1. ESLint
+
+1. Maintain a single ESLint config file at the root level, eliminating the need for project-level ESLint config files.
+2. Utilize Prettier in conjunction with linting.
+3. Ability to lint `.js`,`.jsx`,`.ts`,`.tsx`,`.json`,`.md`,`.yml` files.
+4. All project templates run lint with the fix option enabled.
+5. Ready for use with Husky and lint-staged(for pre-commit linting).
+6. Remove unused imports during linting.
+7. Ignore unused variables or arguments that are named with a leading `_`.
+8. During pre-commit, Prettier is run a second time in addition to linting, as it covers a wider range of extensions.
+9. Warn of `console.log` usage in the development environment, and throw errors for its use in pre-commit and CI. `console.info`, `console.warn`, and `console.error` do not trigger any warnings or errors. We allow `console.log` with a warning in development to accommodate common usage, but prevent its usage in pre-commit and CI to maintain a cleaner codebase.
+
+### 2. Typescript Config
+
+1. All project templates are ready for use with absolute paths.
+2. Facilitate the import of CommonJS modules.
+3. Allow for the import of CommonJS modules as the default export, even if there is no `exports.default`.
+4. File names are case-sensitive.
+5. Ensure all files are modules.
+6. Ability to import and resolve JSON types.
+7. Add the type `undefined` when using an index to access an array or object where the key type is `string`.
+8. Prevent the assignment of `undefined` to types with optional modifiers, unless the optional type explicitly unions with `undefined`.
 
 ## Final Thoughts
 

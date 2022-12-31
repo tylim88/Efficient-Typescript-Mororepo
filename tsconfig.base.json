@@ -19,13 +19,11 @@
         "jsx": "react-jsx",
         "jsxImportSource": "@emotion/react",
         "importHelpers": true,
-        "downlevelIteration": true,
         "isolatedModules": true,
         "esModuleInterop": true,
         "allowSyntheticDefaultImports": true,
         "forceConsistentCasingInFileNames": true,
         "paths": {
-            "*": ["*"],
             "@myOrg/node": ["packages/node-libraries/src/index.ts"],
             "@myOrg/jsdom": ["packages/jsdom-libraries/src/index.ts"]
         },

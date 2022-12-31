@@ -7,6 +7,7 @@ jobs:
         runs-on: ubuntu-latest
         strategy:
             matrix:
+                os: [ubuntu-latest]
                 node-version: [18.x]
         steps:
             - uses: actions/checkout@v3
@@ -27,7 +28,6 @@ jobs:
                       ${{ runner.os }}-
             - run: npm i
             - run: npm run lint
-            - name: Typescript type check
-              run: npm run type
+            - run: npm run type
             - run: npm run build
             - run: npm test
