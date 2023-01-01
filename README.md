@@ -39,7 +39,7 @@
 			<a href="https://snyk.io/test/github/tylim88/Efficient-Typescript-Mororepo" target="_blank">
 				<img
 					src="https://snyk.io/test/github/tylim88/Efficient-Typescript-Mororepo/badge.svg"
-					alt="code coverage"
+					alt="vulnerabilities"
 				/>
 			</a>
 </div>
@@ -60,15 +60,15 @@ This repo uses the following tech stack:
 [ESLint](https://eslint.org/) for enforcing a consistent code style  
 [Prettier](https://prettier.io/) for formatting code consistently  
 [Zod](https://zod.dev/) for validating and manipulating input data in a type-safe manner  
-[tRPC](https://trpc.io/docs) for end-to-end typesafe APIs
+[tRPC](https://trpc.io/docs) for end-to-end typesafe APIs  
 [Prisma](https://www.prisma.io/) for generating a type-safe database access layer  
 [PostgreSQL](https://www.postgresql.org/) for storing data persistently  
-[SWC](https://swc-project.github.io/) for compiling and bundling Javascript/Typescript  
 [React](https://reactjs.org/) for building the user interface  
 [Zustand](https://github.com/pmndrs/zustand) for simple React state management  
 [Mantine](https://mantine.dev/) for providing a library of customizable and reusable UI components  
 [Emotion](https://emotion.sh/docs/introduction) for styling components using CSS-in-JS  
-[Cypress](https://www.cypress.io/) for end-to-end testing
+[Cypress](https://www.cypress.io/) for end-to-end testing  
+[SWC](https://swc-project.github.io/) for compiling and bundling Javascript/Typescript
 
 ## Getting Started
 
