@@ -135,8 +135,6 @@ There are five project templates, each with fine-tuned and simplified configurat
 
 All templates include commands for linting and type checking.
 
-Only front end template(`react-app`) has a build command.
-
 The TypeScript and Vitest configurations for each template are extensively simplified without sacrificing functionality. In most cases, only the configuration files in root folder need to be modified.
 
 Instruction on how to use templates:
