@@ -4,7 +4,7 @@
     "sourceRoot": "packages/jsdom-libraries/src",
     "projectType": "library",
     "targets": {
-        "type": {
+        "build": {
             "executor": "nx:run-commands",
             "options": {
                 "command": "tsc -b packages/jsdom-libraries/tsconfig.json"

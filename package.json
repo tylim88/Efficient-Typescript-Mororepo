@@ -10,12 +10,9 @@
         "build": "rimraf dist && nx run-many --target=build",
         "test": "rimraf coverage && nx run-many --target=test",
         "lint": "nx run-many --target=lint",
-        "type": "rimraf out-tsc && (nx run-many --target=type || true) && rimraf out-tsc",
         "divider2": "=============================lint-staged==============================",
         "pretty-quick": "pretty-quick --staged",
-        "pre-commit": "lint-staged",
-        "divider3": "=============================tools===================================+",
-        "node": "node -r @swc-node/register someScript.ts"
+        "pre-commit": "lint-staged"
     },
     "lint-staged": {
         "*.{js,jsx,ts,tsx,md,json,yml}": "cross-env CI=true eslint --fix"
@@ -33,9 +30,6 @@
         "@nrwl/react": "15.4.1",
         "@nrwl/vite": "15.4.1",
         "@nrwl/workspace": "15.4.1",
-        "@swc-node/register": "^1.5.4",
-        "@swc/cli": "~0.1.55",
-        "@swc/core": "^1.2.173",
         "@testing-library/react": "13.4.0",
         "@types/node": "18.7.1",
         "@types/react": "18.0.25",
@@ -67,6 +61,7 @@
         "pretty-quick": "^3.1.3",
         "react-test-renderer": "18.2.0",
         "rimraf": "^3.0.2",
+        "tsc-watch": "^6.0.0",
         "typescript": "~4.8.2",
         "vite": "^4.0.1",
         "vite-plugin-eslint": "^1.8.1",
@@ -79,6 +74,8 @@
         "@mantine/core": "^5.9.5",
         "@mantine/hooks": "^5.9.5",
         "@swc/helpers": "~0.4.11",
+        "@trpc/client": "^10.7.0",
+        "@trpc/server": "^10.7.0",
         "core-js": "^3.6.5",
         "react": "18.2.0",
         "react-dom": "18.2.0",

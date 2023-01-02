@@ -4,18 +4,19 @@
     "sourceRoot": "packages/node-app/src",
     "projectType": "application",
     "targets": {
-        "serve": {
-            "executor": "@nrwl/js:node",
+        "dev": {
+            "executor": "nx:run-commands",
             "options": {
-                "buildTarget": "node-app:build"
-            },
-            "configurations": {
-                "production": {
-                    "buildTarget": "node-app:build:production"
-                }
+                "command": "tsc-watch -b packages/node-app/tsconfig.json --onSuccess \"node packages/node-app/src/main.js\""
             }
         },
-        "type": {
+        "start": {
+            "executor": "nx:run-commands",
+            "options": {
+                "command": "node packages/node-app/src/main.js"
+            }
+        },
+        "build": {
             "executor": "nx:run-commands",
             "options": {
                 "command": "tsc -b packages/node-app/tsconfig.json"

@@ -67,8 +67,7 @@ This repo uses the following tech stack:
 [Zustand](https://github.com/pmndrs/zustand) for simple React state management  
 [Mantine](https://mantine.dev/) for providing a library of customizable and reusable UI components  
 [Emotion](https://emotion.sh/docs/introduction) for styling components using CSS-in-JS  
-[Cypress](https://www.cypress.io/) for end-to-end testing  
-[SWC](https://swc-project.github.io/) for compiling and bundling Javascript/Typescript
+[Cypress](https://www.cypress.io/) for end-to-end testing
 
 ## Getting Started
 
@@ -96,7 +95,7 @@ This will start the development server and open the application in your default 
 
 ### Build
 
-To build:
+To type check and build:
 
 ```bash
 npm run build
@@ -124,17 +123,9 @@ To run linting with fix and Prettier:
 npm run lint
 ```
 
-### Type Check
-
-To run type check:
-
-```bash
-npm run type
-```
-
 ## Using Project Templates
 
-There are five project templates located in the `templates` folder, each with fine-tuned and simplified configurations:
+There are five project templates, each with fine-tuned and simplified configurations:
 
 1. `node-libraries`: for general TypeScript/JavaScript libraries.
 2. `jsdom-libraries`: similar to `node-libraries`, but specifically for code that manipulates the DOM.
@@ -150,9 +141,9 @@ The TypeScript and Vitest configurations for each template are extensively simpl
 
 Instruction on how to use templates:
 
-### 1. Changing the Project Name
+### 1. Changing Project Names
 
-After copying the template, use a search and replace function to accurately replace all instances of the name, but be sure to exclude the `templates` folder.
+Default projects names are unique enough that a search and replace function can be used to replace all instances of it. It may also be a good idea to keep copies of templates.
 
 Note: the `react-app-e2e` project's `project.json` file also has instances of the `react-app` name, so be sure to update those as well when replacing the `react-app` name.
 
@@ -218,21 +209,19 @@ The following are tools that I highly recommend, but you are free to choose alte
 
 2. Vitest: Easier to configure and featuring a very fast watch mode compared to Jest, with an API similar to Jest for those familiar with the library.
 
-3. SWC: A lightning-fast JS/TS compiler written in Rust. It can run TS scripts out of the box, unlike Babel.
+3. GitHub Actions: A clean and easy-to-use UI for automating tasks, hosted by the same company as your code for faster performance.
 
-4. GitHub Actions: A clean and easy-to-use UI for automating tasks, hosted by the same company as your code for faster performance.
+4. React: While not the best UI library, React has excellent TypeScript support and a large community with plenty of resources.
 
-5. React: While not the best UI library, React has excellent TypeScript support and a large community with plenty of resources.
+5. Mantine: A well-designed React UI library with a modern API and great documentation, offering a wide range of components and useful hooks. Highly recommended.
 
-6. Mantine: A well-designed React UI library with a modern API and great documentation, offering a wide range of components and useful hooks. Highly recommended.
+6. Zustand: A simple and easy-to-use state management library.
 
-7. Zustand: A simple and easy-to-use state management library.
+7. Emotion: The technology behind Mantine, with a similar API to styled-components.
 
-8. Emotion: The technology behind Mantine, with a similar API to styled-components.
+8. PostgreSQL: A reliable, free, and open-source SQL database, widely considered one of the best and working well with Prisma. It is important to use a database supported by Prisma to ensure type safety.
 
-9. PostgreSQL: A reliable, free, and open-source SQL database, widely considered one of the best and working well with Prisma. It is important to use a database supported by Prisma to ensure type safety.
-
-10. tRPC: If you use Zod, tRPC is a natural choice for your server and client. It also works well in monorepos, although it is not as flexible as other client and server technologies when it comes to integration with different repository structures.
+9. tRPC: If you use Zod, tRPC is a natural choice for your server and client. It also works well in monorepos, although it is not as flexible as other client and server technologies when it comes to integration with different repository structures.
 
 ## Reusing Configuration
 
@@ -244,13 +233,15 @@ To reduce the number of configuration files and make maintenance easier, it is i
 
 3. Vite: Each project should have one `vite.config.ts` file that imports a preset from `vite.presets.ts` in the root directory.
 
-4. There are three TS config files in the root directory:
+4. There are fours TS config files in the root directory:
 
-    - `tsconfig.base.json`: responsible for basic configuration and does not participate in any compilation. It is extended by the root directory and most projects.
+    - `tsconfig.base.json`: responsible for basic configuration and does not participate in any compilation. It is directly extended by React projects.
 
     - `tsconfig.json`: extends `tsconfig.base.json` and is responsible for files in the root directory (does not include subdirectories). It compiles but does not emit.
 
-    - `tsconfig.cypress.json`: extends `tsconfig.base.json` and is used by Cypress projects. Unlike other projects that directly extend `tsconfig.base.json`, Cypress TS config requires additional refactoring due to conflicts with the types of the more widely used Vitest.
+    - `tsconfig.cypress.json`: extends `tsconfig.base.json` and is used by Cypress projects.
+
+    - `tsconfig.node.json`: extends `tsconfig.base.json` and is used by node projects.
 
 ### Common configs
 
@@ -272,7 +263,7 @@ To summarize, the key to maintaining low maintenance configuration files is to r
 
 1. Keep the base files as close to the root directory as possible.
 2. Include as many configs as possible in the base files.
-3. If issues arise, create additional configuration files to extend the base configuration as needed(e.g. `tsconfig.cypress.json`).
+3. If issues arise, create additional configuration files to extend the base configuration as needed.
 4. In some cases, multiple sub-base files in the root directory may be required, each targeting a specific project type.
 
 ## Configuration Details

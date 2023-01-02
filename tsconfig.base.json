@@ -6,7 +6,7 @@
         "baseUrl": ".",
         "allowJs": false,
         "noEmit": false,
-        "outDir": "out-tsc",
+        "outDir": "dist",
         "sourceMap": true,
         "declaration": true,
         "declarationMap": true,

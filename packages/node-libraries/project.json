@@ -4,7 +4,7 @@
     "sourceRoot": "packages/node-libraries/src",
     "projectType": "library",
     "targets": {
-        "type": {
+        "build": {
             "executor": "nx:run-commands",
             "options": {
                 "command": "tsc -b packages/node-libraries/tsconfig.json"

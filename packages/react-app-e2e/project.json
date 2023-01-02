@@ -17,7 +17,7 @@
                 }
             }
         },
-        "type": {
+        "build": {
             "executor": "nx:run-commands",
             "options": {
                 "command": "tsc -b packages/react-app-e2e/tsconfig.json"
