@@ -37,10 +37,21 @@
                 }
             }
         },
+        "dev": {
+            "executor": "nx:run-commands",
+            "options": {
+                "command": "nx run react-app:serve:development"
+            }
+        },
         "build": {
             "executor": "nx:run-commands",
             "options": {
-                "command": "tsc -b packages/react-app/tsconfig.json && rimraf package/react-app && nx react-app:bundle"
+                "commands": [
+                    "tsc -b packages/react-app/tsconfig.json",
+                    "rimraf package/react-app",
+                    "nx run react-app:bundle"
+                ],
+                "parallel": false
             }
         },
         "lint": {

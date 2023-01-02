@@ -7,13 +7,13 @@
         "dev": {
             "executor": "nx:run-commands",
             "options": {
-                "command": "tsc-watch -b packages/node-app/tsconfig.json --onSuccess \"node packages/node-app/src/main.js\""
+                "command": "tsc-watch -b packages/node-app/tsconfig.json --onSuccess \"node dist/packages/node-app/src/main.js\""
             }
         },
         "start": {
             "executor": "nx:run-commands",
             "options": {
-                "command": "node packages/node-app/src/main.js"
+                "command": "node dist/packages/node-app/src/main.js"
             }
         },
         "build": {
