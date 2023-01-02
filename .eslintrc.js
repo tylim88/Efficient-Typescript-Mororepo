@@ -5,7 +5,7 @@ module.exports = {
         'plugin:prettier/recommended',
         'plugin:json/recommended',
         'plugin:markdown/recommended',
-        'plugin:yml/standard'
+        'plugin:yml/prettier'
     ],
     ignorePatterns: ['dist', 'templates', 'out-tsc', 'coverage'],
     overrides: [
