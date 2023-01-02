@@ -4,7 +4,7 @@
     "license": "MIT",
     "scripts": {
         "divider": "=============================setup======================================",
-        "setup": "(npx -y husky install || npx husky install) && npm i -D rimraf && rimraf package-lock.json && rimraf node_modules && npm i",
+        "setup": "(npx -y husky install || npx husky install) && npm i -D rimraf && rimraf node_modules && npm i",
         "divider1": "=============================run many==================================",
         "dev": "nx run-many --target=dev",
         "build": "rimraf dist && nx run-many --target=build",
@@ -42,6 +42,7 @@
         "@vitest/ui": "^0.25.8",
         "cross-env": "^7.0.3",
         "cypress": "^11.0.0",
+        "env-cmd": "^10.1.0",
         "eslint": "~8.15.0",
         "eslint-config-prettier": "8.1.0",
         "eslint-plugin-cypress": "^2.10.3",

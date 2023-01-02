@@ -1,3 +1,6 @@
-console.info('Hello World!')
+import * as http from 'http'
 
-export const a = 1
+const server = http.createServer((request, response) => {
+    response.end('Hello, World')
+})
+server.listen(3000)

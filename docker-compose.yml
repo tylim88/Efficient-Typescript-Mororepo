@@ -1,0 +1,28 @@
+version: '3'
+services:
+    postgres:
+        image: 'postgres:latest'
+        container_name: postgres
+        restart: always
+        environment:
+            - POSTGRES_USER=${POSTGRES_USER}
+            - POSTGRES_DB=${POSTGRES_DB}
+            - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    api:
+        restart: always
+        container_name: node-app
+        build:
+            dockerfile: Dockerfile
+            context: .
+        volumes:
+            - /app/node_modules
+            - ./:/app
+        environment:
+            - PGPORT=5432
+            - PGHOST=postgres
+            - POSTGRES_USER=${POSTGRES_USER}
+            - POSTGRES_DB=${POSTGRES_DB}
+            - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+        command: ['npx', 'nx', 'run', 'node-app:${NODE_APP_COMMAND}']
+        depends_on:
+            - postgres
