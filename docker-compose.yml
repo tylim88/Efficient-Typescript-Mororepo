@@ -9,7 +9,7 @@ services:
             - POSTGRES_DB=${POSTGRES_DB}
             - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
     api:
-        restart: always
+        restart: ${NODE_APP_RESTART}
         container_name: node-app
         build:
             dockerfile: Dockerfile

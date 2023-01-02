@@ -13,7 +13,7 @@
         "dev": {
             "executor": "nx:run-commands",
             "options": {
-                "command": "env-cmd -f nx-cloud.env docker-compose -f docker-compose.yml up"
+                "command": "env-cmd -f .env docker-compose -f docker-compose.yml up"
             }
         },
         "start": {
