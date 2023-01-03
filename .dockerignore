@@ -36,5 +36,9 @@ testem.log
 .DS_Store
 Thumbs.db
 
+## Uncommon with Prettier
 ## Environment Variables
 **/*.env
+
+## Uncommon With gitignore
+backups

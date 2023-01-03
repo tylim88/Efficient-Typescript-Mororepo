@@ -1,7 +1,7 @@
 {
-    "name": "node-app",
+    "name": "node-docker",
     "$schema": "../../node_modules/nx/schemas/project-schema.json",
-    "sourceRoot": "packages/node-app/src",
+    "sourceRoot": "packages/node-docker/src",
     "projectType": "application",
     "targets": {
         "build": {
@@ -10,10 +10,10 @@
             "options": {
                 "target": "node",
                 "compiler": "tsc",
-                "outputPath": "dist/packages/node-app",
-                "main": "packages/node-app/src/main.ts",
-                "tsConfig": "packages/node-app/tsconfig.app.json",
-                "assets": ["packages/node-app/src/assets"]
+                "outputPath": "dist/packages/node-docker",
+                "main": "packages/node-docker/src/main.ts",
+                "tsConfig": "packages/node-docker/tsconfig.app.json",
+                "assets": ["packages/node-docker/src/assets"]
             },
             "configurations": {
                 "production": {
@@ -22,8 +22,8 @@
                     "inspect": false,
                     "fileReplacements": [
                         {
-                            "replace": "packages/node-app/src/environments/environment.ts",
-                            "with": "packages/node-app/src/environments/environment.prod.ts"
+                            "replace": "packages/node-docker/src/environments/environment.ts",
+                            "with": "packages/node-docker/src/environments/environment.prod.ts"
                         }
                     ]
                 }
@@ -32,19 +32,30 @@
         "production": {
             "executor": "@nrwl/js:node",
             "options": {
-                "buildTarget": "node-app:build:production"
+                "buildTarget": "node-docker:build"
+            },
+            "configurations": {
+                "production": {
+                    "buildTarget": "node-docker:build:production"
+                }
+            }
+        },
+        "development": {
+            "executor": "nx:run-commands",
+            "options": {
+                "command": "tsc-watch -b packages/node-docker/tsconfig.app.json --onSuccess \"node out-tsc/packages/node-docker/src/main.js\""
             }
         },
         "dev": {
-            "executor": "@nrwl/js:node",
+            "executor": "nx:run-commands",
             "options": {
-                "buildTarget": "node-app:build"
+                "command": "env-cmd -f .env docker-compose -f docker-compose.yml up"
             }
         },
         "type": {
             "executor": "nx:run-commands",
             "options": {
-                "command": "tsc -b packages/node-app/tsconfig.json"
+                "command": "tsc -b packages/node-docker/tsconfig.json"
             }
         },
         "lint": {
@@ -53,14 +64,14 @@
             "options": {
                 "fix": true,
                 "lintFilePatterns": [
-                    "packages/node-app/**/*.{ts,tsx,js,jsx,md,json,yml}"
+                    "packages/node-docker/**/*.{ts,tsx,js,jsx,md,json,yml}"
                 ]
             }
         },
         "test": {
             "executor": "@nrwl/vite:test",
             "options": {
-                "reportsDirectory": "../../coverage/node-app",
+                "reportsDirectory": "../../coverage/node-docker",
                 "config": "vite.config.ts"
             }
         }

@@ -71,15 +71,44 @@ This repo uses the following tech stack:
 
 ## Getting Started
 
-To get started with this repository, first clone and install the dependencies:
+1. clone the repository and install the dependencies:
 
-```bash
-git clone https://github.com/tylim88/Efficient-Typescript-Mororepo.git
-cd Efficient-Typescript-Mororepo
-npm run setup
-```
+    ```bash
+    git clone https://github.com/tylim88/Efficient-Typescript-Mororepo.git
+    cd Efficient-Typescript-Mororepo
+    npm run setup
+    ```
 
-Next, create an access token, follow the steps outlined in this [YouTube guide](https://youtu.be/w1-GiB74ddc?t=17). Instead of adding the access token to the `nx.json` file as shown in the video, refer to the [official guide](https://nx.dev/nx-cloud/account/access-tokens#using-) for instructions on how to place the access token in the `nx-cloud.env` file and configure it in your CI environment.
+2. Create a `nx-cloud.env` file in root directory.
+
+3. Follow the steps in this [YouTube guide](https://youtu.be/w1-GiB74ddc?t=17) to create a nx cloud access token, but do not add it to the nx.json file as shown in the video.
+
+4. Add the access token to the nx-cloud.env file as follows:
+
+    ```env
+    NX_CLOUD_ACCESS_TOKEN=YourNxCloudAccessToken
+    ```
+
+5. Add the access tokens to your GitHub repository secrets as `NX_CLOUD_ACCESS_TOKEN`.
+
+6. (Optional)[Install Docker](https://docs.docker.com/get-docker/).
+
+7. (Optional)Create a `.env` file in root directory and add the following lines:
+
+    ```env
+    NODE_APP_COMMAND=development
+    NODE_APP_RESTART_POLICY=no
+    NODE_APP_RESTART_COUNT=0
+    POSTGRES_USER=AnyUserNameThisIsForDevelopmentOnly
+    POSTGRES_DB=AnyNameThisIsForDevelopmentOnly
+    POSTGRES_PASSWORD=AnyPasswordThisIsForDevelopmentOnly
+    ```
+
+8. (Optional)Follow the steps in this [YouTube guide](https://youtu.be/Qs5xGj85Aek?t=73) to create a Docker Hub access token with read and write permissions.
+
+9. (Optional)Add your Docker username and access token to your GitHub repository secrets as `DOCKER_HUB_USERNAME` and `DOCKER_HUB_ACCESS_TOKEN`.
+
+Note: If you do not plan to use Docker, you can move the `packages/node-docker` directory to `backups` and ignore steps 6 to 9. While you may choose to delete `packages/node-docker`, it contains example runtime code that you may find useful, so you may want to keep it in `backups`.
 
 ### Development
 
@@ -137,9 +166,10 @@ There are five project templates, each with fine-tuned and simplified configurat
 2. `jsdom-lib`: similar to `node-lib`, but specifically for code that manipulates the DOM.
 3. `react-app`: for React applications.
 4. `react-app-e2e`: for end-to-end testing of React applications.
-5. `node-app`: for backend applications.
+5. `node-app`: for backend applications(Configuration only, no runtime code example, see `node-docker` for runtime code example).
+6. `node-docker`: for containerized backend applications.
 
-All templates include commands for linting and type checking.
+All templates include commands for build, linting and type checking.
 
 The TypeScript and Vitest configurations for each template are extensively simplified without sacrificing functionality. In most cases, only the configuration files in root folder need to be modified.
 
@@ -287,21 +317,21 @@ This section provides an in-depth look at the out-of-the-box configurations:
 
 ### 2. Typescript Config
 
-1. All project templates are ready for use with absolute paths.
-2. Facilitate the import of CommonJS modules.
-3. Allow for the import of CommonJS modules as the default export, even if there is no `exports.default`.
-4. File names are case-sensitive.
-5. Ensure all files are modules.
-6. Ability to import and resolve JSON types.
-7. Add the type `undefined` when using an index to access an array or object where the key type is `string`.
-8. Prevent the assignment of `undefined` to types with optional modifiers, unless the optional type explicitly unions with `undefined`.
+1. Absolute paths are ready for use in all project templates.
+2. Simplifies importing CommonJS modules.
+3. Allows for the import of CommonJS modules as the default export, even if no `exports.default` exists.
+4. File name imports are case-sensitive.
+5. Ensures all files are modules.
+6. Allows for the import and resolution of JSON types.
+7. Adds the type `undefined` when using an index to access an array or object with a `string` key type.
+8. Prevents the assignment of `undefined` to types with optional modifiers, unless the optional type is explicitly unioned with `undefined`.
 
 ### 3. GitHub Actions
 
-1. Caches node modules to improve build performance.
-2. Ready for multi-OS and multi-node version strategy to ensure compatibility across different environments.
-3. Build and Push Docker Image.
-4. Ready for CodeQL.
+1. Cache node modules to improve build performance.
+2. Supports multi-OS and multi-node versions.
+3. Includes CodeQL analysis.
+4. Builds and tags a Docker image with the current date and time on main branch push events, and pushes it to Docker Hub.
 
 ## Final Thoughts
 

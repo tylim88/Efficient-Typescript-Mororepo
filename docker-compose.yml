@@ -9,7 +9,7 @@ services:
             - POSTGRES_DB=${POSTGRES_DB}
             - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
     api:
-        container_name: node-app
+        container_name: node-docker
         build:
             dockerfile: Dockerfile
             context: .
@@ -22,7 +22,7 @@ services:
             - POSTGRES_USER=${POSTGRES_USER}
             - POSTGRES_DB=${POSTGRES_DB}
             - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
-        command: ['npx', 'nx', 'run', 'node-app:serve:${NODE_APP_COMMAND}']
+        command: ['npx', 'nx', 'run', 'node-docker:serve:${NODE_APP_COMMAND}']
         depends_on:
             - postgres
 

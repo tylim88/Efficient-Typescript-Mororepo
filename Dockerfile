@@ -8,4 +8,4 @@ COPY package.json ./
 RUN npm i
 
 COPY . .
-RUN npx nx run node-app:build
+RUN npx nx run node-docker:build

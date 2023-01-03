@@ -29,7 +29,7 @@ jobs:
             - run: npm run type
             - run: npm run build
             - run: npm test
-    deploy:
+    push-docker:
         runs-on: ubuntu-latest
         needs: build-test
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
@@ -38,7 +38,7 @@ jobs:
             - uses: docker/metadata-action@v4
               id: meta
               with:
-                  images: ${{ secrets.DOCKER_HUB_USERNAME }}/node-app
+                  images: ${{ secrets.DOCKER_HUB_USERNAME }}/node-docker
                   tags: |
                       type=raw,value={{date 'YYYY-MM-DD-:hh:mm:ss'}}
             - uses: docker/login-action@v2
