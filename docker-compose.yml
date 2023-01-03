@@ -1,4 +1,4 @@
-version: '3'
+version: '3.9'
 services:
     postgres:
         image: 'postgres:latest'
@@ -9,7 +9,6 @@ services:
             - POSTGRES_DB=${POSTGRES_DB}
             - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
     api:
-        restart: ${NODE_APP_RESTART}
         container_name: node-app
         build:
             dockerfile: Dockerfile
@@ -23,6 +22,13 @@ services:
             - POSTGRES_USER=${POSTGRES_USER}
             - POSTGRES_DB=${POSTGRES_DB}
             - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
-        command: ['npx', 'nx', 'run', 'node-app:${NODE_APP_COMMAND}']
+        command: ['npx', 'nx', 'run', 'node-app:serve:${NODE_APP_COMMAND}']
         depends_on:
             - postgres
+
+        deploy:
+            restart_policy:
+                condition: ${NODE_APP_RESTART_POLICY}
+                delay: 5s
+                max_attempts: ${NODE_APP_RESTART_COUNT}
+                window: 120s

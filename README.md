@@ -79,8 +79,6 @@ cd Efficient-Typescript-Mororepo
 npm run setup
 ```
 
-You can use the same script to re-setup the repository at any time.
-
 Next, create an access token, follow the steps outlined in this [YouTube guide](https://youtu.be/w1-GiB74ddc?t=17). Instead of adding the access token to the `nx.json` file as shown in the video, refer to the [official guide](https://nx.dev/nx-cloud/account/access-tokens#using-) for instructions on how to place the access token in the `nx-cloud.env` file and configure it in your CI environment.
 
 ### Development
@@ -95,7 +93,7 @@ This will start the development server and open the application in your default 
 
 ### Build
 
-To type check and build:
+To build:
 
 ```bash
 npm run build
@@ -113,6 +111,14 @@ To run end-to-end tests:
 
 ```bash
 npm run e2e
+```
+
+### Type Check
+
+To type check:
+
+```bash
+npm run type
 ```
 
 ### Linting
