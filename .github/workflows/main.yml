@@ -39,4 +39,4 @@ jobs:
                   context: .
                   file: ./Dockerfile
                   push: true
-                  tags: ${{ secrets.DOCKER_HUB_USERNAME }}/node-app:$(date +'%Y-%m-%dT%H:%M:%S')
+                  tags: ${{ secrets.DOCKER_HUB_USERNAME }}/node-app:{{date 'YYYYMMDD'}}
