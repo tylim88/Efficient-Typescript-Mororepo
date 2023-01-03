@@ -11,13 +11,9 @@
             }
         },
         "build": {
-            "executor": "@nrwl/js:tsc",
-            "outputs": ["{options.outputPath}"],
+            "executor": "nx:run-commands",
             "options": {
-                "outputPath": "dist/packages/node-lib",
-                "main": "packages/node-lib/src/index.ts",
-                "tsConfig": "packages/node-lib/tsconfig.json",
-                "assets": ["packages/node-lib/*.md"]
+                "command": "tsc -b packages/node-lib/tsconfig.lib.json"
             }
         },
         "lint": {

@@ -43,7 +43,7 @@
         "development": {
             "executor": "nx:run-commands",
             "options": {
-                "command": "tsc-watch -b packages/node-app/tsconfig.app.json --onSuccess \"node dist/packages/node-app/src/main.js\""
+                "command": "tsc-watch -b packages/node-app/tsconfig.app.json --onSuccess \"node out-tsc/packages/node-app/src/main.js\""
             }
         },
         "dev": {

@@ -11,13 +11,9 @@
             }
         },
         "build": {
-            "executor": "@nrwl/js:tsc",
-            "outputs": ["{options.outputPath}"],
+            "executor": "nx:run-commands",
             "options": {
-                "outputPath": "dist/packages/jsdom-lib",
-                "main": "packages/jsdom-lib/src/index.ts",
-                "tsConfig": "packages/jsdom-lib/tsconfig.json",
-                "assets": ["packages/jsdom-lib/*.md"]
+                "command": "tsc -b packages/jsdom-lib/tsconfig.lib.json"
             }
         },
         "lint": {
