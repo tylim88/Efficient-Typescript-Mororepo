@@ -29,6 +29,12 @@ jobs:
             - run: npm run type
             - run: npm run build
             - run: npm test
+            - uses: docker/metadata-action@v4
+              id: meta
+              with:
+                  images: name/app
+                  tags: |
+                      type=raw,value={{date 'YYYYMMDD'}}
             - uses: docker/login-action@v2
               with:
                   username: ${{ secrets.DOCKER_HUB_USERNAME }}
@@ -38,5 +44,6 @@ jobs:
               with:
                   context: .
                   file: ./Dockerfile
-                  push: true
-                  tags: ${{ secrets.DOCKER_HUB_USERNAME }}/node-app:$(date '+%Y%m%d')
+                  push: ${{ github.event_name != 'pull_request' }}
+                  tags: ${{ steps.meta.outputs.tags }}
+                  labels: ${{ steps.meta.outputs.labels }}
