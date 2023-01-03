@@ -40,7 +40,7 @@ jobs:
               with:
                   images: ${{ secrets.DOCKER_HUB_USERNAME }}/node-app
                   tags: |
-                      type=raw,value={{date 'YYYYMMDD'}}
+                      type=raw,value={{date 'YYYY-MM-DD-:hh:mm:ss'}}
             - uses: docker/login-action@v2
               with:
                   username: ${{ secrets.DOCKER_HUB_USERNAME }}
