@@ -1,0 +1,42 @@
+{
+    "name": "node-lib",
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
+    "sourceRoot": "packages/node-lib/src",
+    "projectType": "library",
+    "targets": {
+        "type": {
+            "executor": "nx:run-commands",
+            "options": {
+                "command": "tsc -b packages/node-lib/tsconfig.json"
+            }
+        },
+        "build": {
+            "executor": "@nrwl/js:tsc",
+            "outputs": ["{options.outputPath}"],
+            "options": {
+                "outputPath": "dist/packages/node-lib",
+                "main": "packages/node-lib/src/index.ts",
+                "tsConfig": "packages/node-lib/tsconfig.json",
+                "assets": ["packages/node-lib/*.md"]
+            }
+        },
+        "lint": {
+            "executor": "@nrwl/linter:eslint",
+            "outputs": ["{options.outputFile}"],
+            "options": {
+                "fix": true,
+                "lintFilePatterns": [
+                    "packages/node-lib/**/*.{ts,tsx,js,jsx,md,json,yml}"
+                ]
+            }
+        },
+        "test": {
+            "executor": "@nrwl/vite:test",
+            "options": {
+                "reportsDirectory": "../../coverage/node-lib",
+                "config": "vite.config.ts"
+            }
+        }
+    },
+    "tags": []
+}

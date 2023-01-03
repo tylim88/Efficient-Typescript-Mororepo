@@ -59,14 +59,16 @@
             "outputs": ["{options.outputFile}"],
             "options": {
                 "fix": true,
-                "lintFilePatterns": ["**/*.{ts,tsx,js,jsx,md,json,yml}"]
+                "lintFilePatterns": [
+                    "packages/react-app/**/*.{ts,tsx,js,jsx,md,json,yml}"
+                ]
             }
         },
         "test": {
             "executor": "@nrwl/vite:test",
-            "outputs": ["{projectRoot}/coverage"],
             "options": {
-                "reportsDirectory": "../../coverage/react-app"
+                "reportsDirectory": "../../coverage/react-app",
+                "config": "vite.config.ts"
             }
         }
     },

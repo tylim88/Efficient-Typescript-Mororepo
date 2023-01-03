@@ -1,0 +1,42 @@
+{
+    "name": "jsdom-lib",
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
+    "sourceRoot": "packages/jsdom-lib/src",
+    "projectType": "library",
+    "targets": {
+        "type": {
+            "executor": "nx:run-commands",
+            "options": {
+                "command": "tsc -b packages/jsdom-lib/tsconfig.json"
+            }
+        },
+        "build": {
+            "executor": "@nrwl/js:tsc",
+            "outputs": ["{options.outputPath}"],
+            "options": {
+                "outputPath": "dist/packages/jsdom-lib",
+                "main": "packages/jsdom-lib/src/index.ts",
+                "tsConfig": "packages/jsdom-lib/tsconfig.json",
+                "assets": ["packages/jsdom-lib/*.md"]
+            }
+        },
+        "lint": {
+            "executor": "@nrwl/linter:eslint",
+            "outputs": ["{options.outputFile}"],
+            "options": {
+                "fix": true,
+                "lintFilePatterns": [
+                    "packages/jsdom-lib/**/*.{ts,tsx,js,jsx,md,json,yml}"
+                ]
+            }
+        },
+        "test": {
+            "executor": "@nrwl/vite:test",
+            "options": {
+                "reportsDirectory": "../../coverage/jsdom-lib",
+                "config": "vite.config.ts"
+            }
+        }
+    },
+    "tags": []
+}

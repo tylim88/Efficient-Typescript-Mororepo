@@ -6,7 +6,7 @@
         "baseUrl": ".",
         "allowJs": false,
         "noEmit": false,
-        "outDir": "dist",
+        "outDir": "out-tsc",
         "sourceMap": true,
         "declaration": true,
         "declarationMap": true,
@@ -24,8 +24,8 @@
         "allowSyntheticDefaultImports": true,
         "forceConsistentCasingInFileNames": true,
         "paths": {
-            "@myOrg/node": ["packages/node-libraries/src/index.ts"],
-            "@myOrg/jsdom": ["packages/jsdom-libraries/src/index.ts"]
+            "@myOrg/node": ["packages/node-lib/src/index.ts"],
+            "@myOrg/jsdom": ["packages/jsdom-lib/src/index.ts"]
         },
         "skipLibCheck": true,
         "skipDefaultLibCheck": true,

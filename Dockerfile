@@ -1,7 +1,11 @@
 FROM node:alpine
 WORKDIR "/app"
-COPY package.json ./
+
+# extra step for more granular caching
+COPY package.json ./ 
+
+# npm i rerun if package.json has changed
 RUN npm i
+
 COPY . .
 RUN npx nx run node-app:build
-CMD ["npx", "nx", "run", "node-app:start"]

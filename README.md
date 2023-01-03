@@ -127,8 +127,8 @@ npm run lint
 
 There are five project templates, each with fine-tuned and simplified configurations:
 
-1. `node-libraries`: for general TypeScript/JavaScript libraries.
-2. `jsdom-libraries`: similar to `node-libraries`, but specifically for code that manipulates the DOM.
+1. `node-lib`: for general TypeScript/JavaScript libraries.
+2. `jsdom-lib`: similar to `node-lib`, but specifically for code that manipulates the DOM.
 3. `react-app`: for React applications.
 4. `react-app-e2e`: for end-to-end testing of React applications.
 5. `node-app`: for backend applications.
@@ -199,6 +199,8 @@ Technologies such as Docker, ESLint, Prettier, and TypeScript are not discussed 
 
 3. Prisma: Prisma is the ORM with the best type safety. (That being said, I am not a fan of the schema-first approach because it adds cognitive cost (the need to learn a schema language). I prefer a code-first approach, specifically a type-first approach (using types as schemas)).
 
+4. tRPC: If you are using Zod, tRPC is a good choice for your server and client because it has the best type safety. Additionally, tRPC works best in a monorepo, which fits well with the structure of this project.
+
 ## Replaceable Techs
 
 The following are tools that I highly recommend, but you are free to choose alternatives:
@@ -218,8 +220,6 @@ The following are tools that I highly recommend, but you are free to choose alte
 7. Emotion: The technology behind Mantine, with a similar API to styled-components.
 
 8. PostgreSQL: A reliable, free, and open-source SQL database, widely considered one of the best and working well with Prisma. It is important to use a database supported by Prisma to ensure type safety.
-
-9. tRPC: If you use Zod, tRPC is a natural choice for your server and client. It also works well in monorepos, although it is not as flexible as other client and server technologies when it comes to integration with different repository structures.
 
 ## Reusing Configuration
 
@@ -261,8 +261,7 @@ To summarize, the key to maintaining low maintenance configuration files is to r
 
 1. Keep the base files as close to the root directory as possible.
 2. Include as many configs as possible in the base files.
-3. If issues arise, create additional configuration files to extend the base configuration as needed.
-4. In some cases, multiple sub-base files in the root directory may be required, each targeting a specific project type.
+3. Multiple sub-base files in the root directory may be required, each targeting a specific project type.
 
 ## Configuration Details
 
@@ -295,6 +294,8 @@ This section provides an in-depth look at the out-of-the-box configurations:
 
 1. Caches node modules to improve build performance.
 2. Ready for multi-OS and multi-node version strategy to ensure compatibility across different environments.
+3. Build and Push Docker Image.
+4. Ready for CodeQL.
 
 ## Final Thoughts
 

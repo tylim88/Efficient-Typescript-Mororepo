@@ -7,9 +7,10 @@
         "setup": "(npx -y husky install || npx husky install) && npm i -D rimraf && rimraf node_modules && npm i",
         "divider1": "=============================run many==================================",
         "dev": "nx run-many --target=dev",
-        "build": "rimraf dist && nx run-many --target=build",
+        "build": "nx run-many --target=build",
         "test": "rimraf coverage && nx run-many --target=test",
         "lint": "nx run-many --target=lint",
+        "type": "nx run-many --target=type",
         "divider2": "=============================lint-staged==============================",
         "pretty-quick": "pretty-quick --staged",
         "pre-commit": "lint-staged"

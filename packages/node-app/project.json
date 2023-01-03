@@ -4,10 +4,46 @@
     "sourceRoot": "packages/node-app/src",
     "projectType": "application",
     "targets": {
+        "build": {
+            "executor": "@nrwl/webpack:webpack",
+            "outputs": ["{options.outputPath}"],
+            "options": {
+                "target": "node",
+                "compiler": "tsc",
+                "outputPath": "dist/packages/node",
+                "main": "packages/node-app/src/main.ts",
+                "tsConfig": "packages/node-app/tsconfig.app.json",
+                "assets": ["packages/node-app/src/assets"]
+            },
+            "configurations": {
+                "production": {
+                    "optimization": true,
+                    "extractLicenses": true,
+                    "inspect": false,
+                    "fileReplacements": [
+                        {
+                            "replace": "packages/node-app/src/environments/environment.ts",
+                            "with": "packages/node-app/src/environments/environment.prod.ts"
+                        }
+                    ]
+                }
+            }
+        },
+        "production": {
+            "executor": "@nrwl/js:node",
+            "options": {
+                "buildTarget": "node-app:build"
+            },
+            "configurations": {
+                "production": {
+                    "buildTarget": "node-app:build:production"
+                }
+            }
+        },
         "development": {
             "executor": "nx:run-commands",
             "options": {
-                "command": "tsc-watch -b packages/node-app/tsconfig.json --onSuccess \"node dist/packages/node-app/src/main.js\""
+                "command": "tsc-watch -b packages/node-app/tsconfig.app.json --onSuccess \"node dist/packages/node-app/src/main.js\""
             }
         },
         "dev": {
@@ -16,13 +52,7 @@
                 "command": "env-cmd -f .env docker-compose -f docker-compose.yml up"
             }
         },
-        "start": {
-            "executor": "nx:run-commands",
-            "options": {
-                "command": "node dist/packages/node-app/src/main.js"
-            }
-        },
-        "build": {
+        "type": {
             "executor": "nx:run-commands",
             "options": {
                 "command": "tsc -b packages/node-app/tsconfig.json"
@@ -33,14 +63,16 @@
             "outputs": ["{options.outputFile}"],
             "options": {
                 "fix": true,
-                "lintFilePatterns": ["**/*.{ts,tsx,js,jsx,md,json,yml}"]
+                "lintFilePatterns": [
+                    "packages/node-app/**/*.{ts,tsx,js,jsx,md,json,yml}"
+                ]
             }
         },
         "test": {
             "executor": "@nrwl/vite:test",
-            "outputs": ["{projectRoot}/coverage"],
             "options": {
-                "reportsDirectory": "../../coverage/node-app"
+                "reportsDirectory": "../../coverage/node-app",
+                "config": "vite.config.ts"
             }
         }
     },
