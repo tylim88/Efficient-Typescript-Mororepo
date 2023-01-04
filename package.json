@@ -11,6 +11,7 @@
         "test": "rimraf coverage && nx run-many --target=test",
         "lint": "nx run-many --target=lint",
         "type": "nx run-many --target=type",
+        "down": "docker-compose down",
         "divider2": "=============================lint-staged==============================",
         "pretty-quick": "pretty-quick --staged",
         "pre-commit": "lint-staged"

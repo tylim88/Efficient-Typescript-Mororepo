@@ -71,6 +71,8 @@ This repo uses the following tech stack:
 
 ## Getting Started
 
+At this time, there is no project generation commands yet. Therefore, you will need to manually perform certain operations to set up the projects.
+
 1. clone the repository and install the dependencies:
 
     ```bash
@@ -81,9 +83,9 @@ This repo uses the following tech stack:
 
 2. Create a `nx-cloud.env` file in root directory.
 
-3. Follow the steps in this [YouTube guide](https://youtu.be/w1-GiB74ddc?t=17) to create a nx cloud access token, but do not add it to the nx.json file as shown in the video.
+3. Follow the steps in this [YouTube guide](https://youtu.be/w1-GiB74ddc?t=17) to create a nx cloud access token, but do not add it to the `nx.json` file as shown in the video.
 
-4. Add the access token to the nx-cloud.env file as follows:
+4. Add the access token to the `nx-cloud.env` file as follows:
 
     ```env
     NX_CLOUD_ACCESS_TOKEN=YourNxCloudAccessToken
@@ -108,80 +110,52 @@ This repo uses the following tech stack:
 
 9. (Optional)Add your Docker username and access token to your GitHub repository secrets as `DOCKER_HUB_USERNAME` and `DOCKER_HUB_ACCESS_TOKEN`.
 
-Note: If you do not plan to use Docker, you can move the `packages/node-docker` directory to `backups` and ignore steps 6 to 9. While you may choose to delete `packages/node-docker`, it contains example runtime code that you may find useful, so you may want to keep it in `backups`.
+### Without Docker
 
-### Development
+If you do not plan to use Docker:
 
-To run in development:
+1. Ignore steps 6 to 9.
 
-```bash
-npm run dev
-```
+2. Delete `packages/node-docker`.
 
-This will start the development server and open the application in your default browser.
+3. Remove the `push-docker` job in `.github/workflows/main.yml`.
 
-### Build
+### Quick Commands
 
-To build:
-
-```bash
-npm run build
-```
-
-### Testing
-
-To run unit and integration tests:
-
-```bash
-npm test
-```
-
-To run end-to-end tests:
-
-```bash
-npm run e2e
-```
-
-### Type Check
-
-To type check:
-
-```bash
-npm run type
-```
-
-### Linting
-
-To run linting with fix and Prettier:
-
-```bash
-npm run lint
-```
+1. `npm run dev`: This will start the development server(`node-docker`) and you can open the application(`react-app`) in your default browser.
+2. `npm run build`: Build all projects except `react-app-e2e`.
+3. `npm test`: Test all projects except `react-app-e2e`.
+4. `npm run e2e`: Run e2e test, `react-app-e2e` only.
+5. `npm run type`: Run type check on all projects.
+6. `npm run lint`: Run linting with fix and prettify all projects.
+7. `npm run down`: Shut down all Docker containers.
 
 ## Using Project Templates
 
-There are five project templates, each with fine-tuned and simplified configurations:
+There are six project templates, each with fine-tuned and simplified configurations:
 
-1. `node-lib`: for general TypeScript/JavaScript libraries.
+1. `node-lib`: for general TypeScript libraries.
 2. `jsdom-lib`: similar to `node-lib`, but specifically for code that manipulates the DOM.
 3. `react-app`: for React applications.
 4. `react-app-e2e`: for end-to-end testing of React applications.
-5. `node-app`: for backend applications(Configuration only, no runtime code example, see `node-docker` for runtime code example).
+5. `node-app`: for backend applications(configuration only, no example runtime code, you can copy `node-docker` example runtime code).
 6. `node-docker`: for containerized backend applications.
-
-All templates include commands for build, linting and type checking.
 
 The TypeScript and Vitest configurations for each template are extensively simplified without sacrificing functionality. In most cases, only the configuration files in root folder need to be modified.
 
-Instruction on how to use templates:
+The `backups` folder stores copies of templates. You can always copy a fresh copy from it.
 
 ### 1. Changing Project Names
 
-Default projects names are unique enough that a search and replace function can be used to replace all instances of it. It may also be a good idea to keep copies of templates.
+It is crucial to make sure that each project has a unique name. If you happen to have two projects with the same name, you will need to rename one of them.
+
+Default projects names are unique enough that a search and replace function can be used to replace all instances of it. **Be sure to exclude `backups` folder before replacing.**
 
 Note: the `react-app-e2e` project's `project.json` file also has instances of the `react-app` name, so be sure to update those as well when replacing the `react-app` name.
 
 ### 2. Updating the ESLint Configuration
+
+Whenever you add a new copy of a template:
 
 If the template is a `react-app` or `react-app-e2e`, **update the existing** `files` field in the appropriate ESLint `override` to include the path to the new project.
 
@@ -209,7 +183,57 @@ For `react-app-e2e`:
 }
 ```
 
+It is recommended that you modify the new project name before adding the path to the `files` field in the ESLint `override` configuration.
+
 No action is required for the other templates.
+
+## Configuration Details
+
+This section provides an in-depth look at the default configurations:
+
+### 1. ESLint
+
+1. Maintain a single ESLint config file at the root level, eliminating the need for project-level ESLint config files.
+2. Utilize Prettier in conjunction with linting.
+3. Ability to lint `.js`,`.jsx`,`.ts`,`.tsx`,`.json`,`.md`,`.yml` files.
+4. All project templates run lint with the fix option enabled.
+5. Ready for use with Husky and lint-staged(for pre-commit linting).
+6. Remove unused imports during linting.
+7. Ignore unused variables or arguments that are named with a leading `_`.
+8. During pre-commit, Prettier is run a second time in addition to linting, as it covers a wider range of extensions.
+9. Warn of `console.log` usage in the development environment, and throw errors for its use in pre-commit and CI. `console.info`, `console.warn`, and `console.error` do not trigger any warnings or errors. We allow `console.log` with a warning in development to accommodate common usage, but prevent its usage in pre-commit and CI to maintain a cleaner codebase.
+
+### 2. Typescript Config
+
+1. Absolute paths are ready for use in all project templates.
+2. Simplifies importing CommonJS modules.
+3. Allows for the import of CommonJS modules as the default export, even if no `exports.default` exists.
+4. File name imports are case-sensitive.
+5. Ensures all files are modules.
+6. Allows for the import and resolution of JSON types.
+7. Adds the type `undefined` when using an index to access an array or object with a `string` or `number` key type.
+8. Prevents the assignment of `undefined` to types with optional modifiers, unless the optional type is explicitly unioned with `undefined`.
+
+### 3. GitHub Actions
+
+1. Cache node modules to improve build performance.
+2. Supports multi-OS and multi-node versions.
+3. Includes CodeQL analysis.
+4. Builds and tags a Docker image with the current date and time on main branch push events, and pushes it to Docker Hub.
+
+### 4. Docker
+
+1. `Dockerfile` granular caching.
+2. Maintain a single `Dockerfile` for different environments by utilizing environment variable in `docker-compose.yml`.
+3. Volume mapping for both node and Postgres.
+
+### 5. VS Code
+
+1. File nesting settings.
+
+## Additional Notes
+
+The following sections are for informational purposes only and do not need to be followed in order to use this repository. They contain my thought process and development notes.
 
 ## How Tools are Chosen
 
@@ -299,39 +323,9 @@ To summarize, the key to maintaining low maintenance configuration files is to r
 2. Include as many configs as possible in the base files.
 3. Multiple sub-base files in the root directory may be required, each targeting a specific project type.
 
-## Configuration Details
+## Commands
 
-This section provides an in-depth look at the out-of-the-box configurations:
-
-### 1. ESLint
-
-1. Maintain a single ESLint config file at the root level, eliminating the need for project-level ESLint config files.
-2. Utilize Prettier in conjunction with linting.
-3. Ability to lint `.js`,`.jsx`,`.ts`,`.tsx`,`.json`,`.md`,`.yml` files.
-4. All project templates run lint with the fix option enabled.
-5. Ready for use with Husky and lint-staged(for pre-commit linting).
-6. Remove unused imports during linting.
-7. Ignore unused variables or arguments that are named with a leading `_`.
-8. During pre-commit, Prettier is run a second time in addition to linting, as it covers a wider range of extensions.
-9. Warn of `console.log` usage in the development environment, and throw errors for its use in pre-commit and CI. `console.info`, `console.warn`, and `console.error` do not trigger any warnings or errors. We allow `console.log` with a warning in development to accommodate common usage, but prevent its usage in pre-commit and CI to maintain a cleaner codebase.
-
-### 2. Typescript Config
-
-1. Absolute paths are ready for use in all project templates.
-2. Simplifies importing CommonJS modules.
-3. Allows for the import of CommonJS modules as the default export, even if no `exports.default` exists.
-4. File name imports are case-sensitive.
-5. Ensures all files are modules.
-6. Allows for the import and resolution of JSON types.
-7. Adds the type `undefined` when using an index to access an array or object with a `string` key type.
-8. Prevents the assignment of `undefined` to types with optional modifiers, unless the optional type is explicitly unioned with `undefined`.
-
-### 3. GitHub Actions
-
-1. Cache node modules to improve build performance.
-2. Supports multi-OS and multi-node versions.
-3. Includes CodeQL analysis.
-4. Builds and tags a Docker image with the current date and time on main branch push events, and pushes it to Docker Hub.
+This sections di
 
 ## Final Thoughts
 

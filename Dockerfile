@@ -1,10 +1,11 @@
 FROM node:alpine
 WORKDIR "/app"
 
-# extra step for more granular caching
+# why not combine this step with COPY . .?
+# Because we want to cache `npm i` step granulary 
 COPY package.json ./ 
 
-# npm i rerun if package.json has changed
+# npm i rerun only if package.json has changed
 RUN npm i
 
 COPY . .
