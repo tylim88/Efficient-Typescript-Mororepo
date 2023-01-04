@@ -36,9 +36,9 @@
             }
         },
         "dev": {
-            "executor": "@nrwl/js:node",
+            "executor": "nx:run-commands",
             "options": {
-                "buildTarget": "node-app:build"
+                "command": "tsc-watch -b packages/node-app/tsconfig.app.json --onSuccess \"node dist/out-tsc/packages/node-app/src/main.js\""
             }
         },
         "type": {
