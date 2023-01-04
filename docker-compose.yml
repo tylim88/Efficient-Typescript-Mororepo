@@ -4,10 +4,13 @@ services:
         image: 'postgres:latest'
         container_name: postgres
         restart: always
+        volumes:
+            - ./data/postgres-data:/var/lib/postgresql/data
         environment:
             - POSTGRES_USER=${POSTGRES_USER}
             - POSTGRES_DB=${POSTGRES_DB}
             - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+
     api:
         container_name: node-docker
         build:
@@ -22,7 +25,7 @@ services:
             - POSTGRES_USER=${POSTGRES_USER}
             - POSTGRES_DB=${POSTGRES_DB}
             - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
-        command: ['npx', 'nx', 'run', 'node-docker:serve:${NODE_APP_COMMAND}']
+        command: ['npx', 'nx', 'run', 'node-docker:${NODE_APP_COMMAND}']
         depends_on:
             - postgres
 
@@ -30,5 +33,5 @@ services:
             restart_policy:
                 condition: ${NODE_APP_RESTART_POLICY}
                 delay: 5s
-                max_attempts: ${NODE_APP_RESTART_COUNT}
+                max_attempts: ${NODE_APP_RESTART_COUNT} # it is a number but linter complain this is a string
                 window: 120s
