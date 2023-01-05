@@ -51,7 +51,7 @@ A minimal, optimal setup for modern web development projects using TypeScript.
 
 This repo uses the following tech stack:
 
-[Nx](https://nx.dev/) for managing and building monorepo applications  
+[NX](https://NX.dev/) for managing and building monorepo applications  
 [Docker](https://www.docker.com/) for containerizing the application and its dependencies  
 [GitHub Actions](https://github.com/features/actions) for automating the build and deployment process  
 [TypeScript](https://www.typescriptlang.org/) for static type checking and improved developer experience  
@@ -73,7 +73,7 @@ This repo uses the following tech stack:
 
 At this time, there is no project generation commands yet. Therefore, you will need to manually perform certain operations to set up the projects.
 
-1. clone the repository and install the dependencies:
+1. Clone the repository and install the dependencies:
 
     ```bash
     git clone https://github.com/tylim88/Efficient-Typescript-Mororepo.git
@@ -81,11 +81,11 @@ At this time, there is no project generation commands yet. Therefore, you will n
     npm run setup
     ```
 
-2. Create a `nx-cloud.env` file in root directory.
+2. Create a `NX-cloud.env` file in root directory.
 
-3. Follow the steps in this [YouTube guide](https://youtu.be/w1-GiB74ddc?t=17) to create a nx cloud access token, but do not add it to the `nx.json` file as shown in the video.
+3. Follow the steps in this [YouTube guide](https://youtu.be/w1-GiB74ddc?t=17) to create a NX cloud access token, but do not add it to the `NX.json` file as shown in the video.
 
-4. Add the access token to the `nx-cloud.env` file as follows:
+4. Add the access token to the `NX-cloud.env` file as follows:
 
     ```env
     NX_CLOUD_ACCESS_TOKEN=YourNxCloudAccessToken
@@ -132,14 +132,14 @@ If you do not plan to use Docker:
 
 ## Using Project Templates
 
-There are six project templates, each with fine-tuned and simplified configurations:
+There are six project templates available, each with fine-tuned and simplified configurations:
 
 1. `node-lib`: for general TypeScript libraries.
 2. `jsdom-lib`: similar to `node-lib`, but specifically for code that manipulates the DOM.
 3. `react-app`: for React applications.
 4. `react-app-e2e`: for end-to-end testing of React applications.
 5. `node-app`: for backend applications(configuration only, no example runtime code, you can copy `node-docker` example runtime code).
-6. `node-docker`: for containerized backend applications.
+6. `node-docker`: for containerized backend applications. It features volume mapping and runs the development environment within a container with watch mode enabled, allowing for automatic reloading of the server upon any changes to the code on the host.
 
 The TypeScript and Vitest configurations for each template are extensively simplified without sacrificing functionality. In most cases, only the configuration files in root folder need to be modified.
 
@@ -167,7 +167,7 @@ For `react-app`:
         "packages/my-react-app/**/*.{ts,tsx,js,jsx}",
         "packages/my-other-react-app/**/*.{ts,tsx,js,jsx}"
     ],
-    "extends": ["plugin:@nrwl/nx/react"]
+    "extends": ["plugin:@nrwl/NX/react"]
 }
 ```
 
@@ -186,6 +186,22 @@ For `react-app-e2e`:
 It is recommended that you modify the new project name before adding the path to the `files` field in the ESLint `override` configuration.
 
 No action is required for the other templates.
+
+### 3. Add the path to the TypeScript configuration
+
+To use absolute paths in your library project, add the path to the `tsconfig.base.json` file. Example:
+
+```json
+{
+    "compilerOptions": {
+        // ... something else
+        "paths": {
+            // ... something else
+            "@myOrg/myLib": ["packages/myLib/src/index.ts"]
+        }
+    }
+}
+```
 
 ## Configuration Details
 
@@ -213,6 +229,7 @@ This section provides an in-depth look at the default configurations:
 6. Allows for the import and resolution of JSON types.
 7. Adds the type `undefined` when using an index to access an array or object with a `string` or `number` key type.
 8. Prevents the assignment of `undefined` to types with optional modifiers, unless the optional type is explicitly unioned with `undefined`.
+9. Incremental compilation.
 
 ### 3. GitHub Actions
 
@@ -251,9 +268,9 @@ When choosing tools, the following four qualities are considered in this order o
 
 ## Core Technologies
 
-Technologies such as Docker, ESLint, Prettier, and TypeScript are not discussed here, as they are considered standard choices at this point. The following technologies play long-term roles in development, including folder structuring (Nx), API design (Zod), and database interaction (Prisma):
+Technologies such as Docker, ESLint, Prettier, and TypeScript are not discussed here, as they are considered standard choices at this point. The following technologies play long-term roles in development, including folder structuring (NX), API design (Zod), and database interaction (Prisma):
 
-1. Nx: At present, Nx is a superior choice to Turbo Repo. While Turbo Repo is written in a faster language, Nx is still faster and has more functionality, including a dependency graph and an integrated repository. Nx also has a larger and more mature community. The absence of an integrated repository is a significant drawback for Turbo Repo, while Nx's integrated repository makes it better for code reuse and maintenance.
+1. NX: At present, NX is a superior choice to Turbo Repo. While Turbo Repo is written in a faster language, NX is still faster and has more functionality, including a dependency graph and an integrated repository. NX also has a larger and more mature community. The absence of an integrated repository is a significant drawback for Turbo Repo, while NX's integrated repository makes it better for code reuse and maintenance.
 
 2. Zod: There are many validation libraries available, but Zod stands out with its user-friendly API and type inference approach. It combines validation and API schema into one, making it the heart of your API design. Zod is a bit slow, however, and may not be suitable for parsing large amounts of data.
 
@@ -323,9 +340,33 @@ To summarize, the key to maintaining low maintenance configuration files is to r
 2. Include as many configs as possible in the base files.
 3. Multiple sub-base files in the root directory may be required, each targeting a specific project type.
 
-## Commands
+## Q & A
 
-This sections di
+1. Why not running `dev` with the default NX `serve` command?
+
+    There are two issues with the `serve` commands.
+
+    First issue, First, if you `serve` two projects (project A and project B), NX will try to reload both of them when you modify one of the projects. For example, if you modify A, NX will kill the process of project A and reload it. However, NX will reload project B without killing the previous process, which can result in harmless but annoying error messages in the console.
+
+    Second, using `serve` with a mapped volume in a container will not reload the server when code is modified on the host.
+
+2. Why do we need a `type` commands(for type check) when we already have a `build` commands?
+
+    Normally, we expect type checking to be included in the build process. However, there are two reasons why we have a separate `type` command.
+
+    First, `vite` does not use `tsc` to compile the code, so it does not perform type checking during the build process.
+
+    Second, NX generates TypeScript project references. When we build for production, it checks types and compile only our runtime code, ignoring `test` and `spec` files. While we could drop the TypeScript project references, we believe it is beneficial to keep them as they can be helpful when the codebase grows very large.
+
+3. In `node-docker`, what is the difference between `dev` and `development` commands?
+
+    The `development` command runs watch mode in host.
+
+    The `dev` command starts the Docker containers and runs the `development` command to run watch mode in the container. The volume is mapped, so modifying host code will reload the container server.
+
+4. Why was the NX build command modified to build `jsdom-lib` and `node-lib`?
+
+    A compilation error was encountered, so the `build` command was replaced.
 
 ## Final Thoughts
 
