@@ -45,6 +45,8 @@
 </div>
 A minimal, optimal setup for modern web development projects using TypeScript.
 
+This readme was created with the assistance of ChatGPT.
+
 (still in development, do not use)
 
 ## Technologies
@@ -189,14 +191,14 @@ No action is required for the other templates.
 
 ### 3. Add the path to the TypeScript configuration
 
-To use absolute paths in your library project, add the path to the `tsconfig.base.json` file. Example:
+For optimal usage, it is recommended that you add the path to the tsconfig.base.json file if your project is a library. This will enable the use of absolute paths. An example of how to do this is shown below:
 
 ```json
 {
     "compilerOptions": {
-        // ... something else
+        // ... other options
         "paths": {
-            // ... something else
+            // ... other paths
             "@myOrg/myLib": ["packages/myLib/src/index.ts"]
         }
     }
