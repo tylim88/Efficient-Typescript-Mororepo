@@ -11,13 +11,14 @@
         "test": "rimraf coverage && nx run-many --target=test",
         "lint": "nx run-many --target=lint",
         "type": "nx run-many --target=type",
-        "down": "docker-compose down",
-        "divider2": "=============================lint-staged==============================",
-        "pretty-quick": "pretty-quick --staged",
-        "pre-commit": "lint-staged"
+        "divider2": "=============================commands==============================",
+        "down": "docker-compose down"
     },
     "lint-staged": {
-        "*.{js,jsx,ts,tsx,md,json,yml}": "cross-env CI=true eslint --fix"
+        "*.{js,jsx,ts,tsx,md,json,yml}": [
+            "cross-env CI=true eslint --fix",
+            "pretty-quick --staged --branch main"
+        ]
     },
     "private": true,
     "devDependencies": {

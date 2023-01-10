@@ -218,7 +218,7 @@ This section provides an in-depth look at the default configurations:
 5. Ready for use with Husky and lint-staged(for pre-commit linting).
 6. Remove unused imports during linting.
 7. Ignore unused variables or arguments that are named with a leading `_`.
-8. During pre-commit, Prettier is run a second time in addition to linting, as it covers a wider range of extensions.
+8. During pre-commit, Prettier is run a second time in addition to linting, as it covers a wider range of extensions and ESLint fix only warnings and errors.
 9. Warn of `console.log` usage in the development environment, and throw errors for its use in pre-commit and CI. `console.info`, `console.warn`, and `console.error` do not trigger any warnings or errors. We allow `console.log` with a warning in development to accommodate common usage, but prevent its usage in pre-commit and CI to maintain a cleaner codebase.
 
 ### 2. Typescript Config
@@ -369,6 +369,8 @@ To summarize, the key to maintaining low maintenance configuration files is to r
 4. Why was the NX build command modified to build `jsdom-lib` and `node-lib`?
 
     A compilation error was encountered, so the `build` command was replaced.
+
+5.
 
 ## Final Thoughts
 
