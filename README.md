@@ -212,13 +212,13 @@ This section provides an in-depth look at the default configurations:
 ### 1. ESLint
 
 1. Maintain a single ESLint config file at the root level, eliminating the need for project-level ESLint config files.
-2. Utilize Prettier in conjunction with linting.
-3. Ability to lint `.js`,`.jsx`,`.ts`,`.tsx`,`.json`,`.md`,`.yml` files.
-4. All project templates run lint with the fix option enabled.
-5. Ready for use with Husky and lint-staged(for pre-commit linting).
-6. Remove unused imports during linting.
-7. Ignore unused variables or arguments that are named with a leading `_`.
-8. During pre-commit, Prettier is run a second time in addition to linting, as it covers a wider range of extensions and ESLint fix only warnings and errors.
+2. Utilize Prettier in conjunction with linting only if linting errors or warnings are present.
+3. Because ESLint only fixes warnings and errors, Prettier will also be run during pre-commit to address non-error and non-warning cases and to cover more file types.
+4. Ability to lint `.js`,`.jsx`,`.ts`,`.tsx`,`.json`,`.md`,`.yml` files.
+5. All project templates run lint with the fix option enabled.
+6. Ready for use with Husky and lint-staged(for pre-commit linting).
+7. Remove unused imports during linting.
+8. Ignore unused variables or arguments that are named with a leading `_`.
 9. Warn of `console.log` usage in the development environment, and throw errors for its use in pre-commit and CI. `console.info`, `console.warn`, and `console.error` do not trigger any warnings or errors. We allow `console.log` with a warning in development to accommodate common usage, but prevent its usage in pre-commit and CI to maintain a cleaner codebase.
 
 ### 2. Typescript Config
