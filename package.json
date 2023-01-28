@@ -79,7 +79,7 @@
         "@mantine/hooks": "^5.9.5",
         "@swc/helpers": "~0.4.11",
         "@trpc/client": "^10.7.0",
-        "@trpc/server": "^10.7.0",
+        "@trpc/server": "^10.8.1",
         "core-js": "^3.6.5",
         "react": "18.2.0",
         "react-dom": "18.2.0",
