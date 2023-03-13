@@ -223,15 +223,14 @@ This section provides an in-depth look at the default configurations:
 
 ### 2. Typescript Config
 
-1. Absolute paths are ready for use in all project templates.
-2. Simplifies importing CommonJS modules.
-3. Allows for the import of CommonJS modules as the default export, even if no `exports.default` exists.
-4. File name imports are case-sensitive.
-5. Ensures all files are modules.
-6. Allows for the import and resolution of JSON types.
-7. Adds the type `undefined` when using an index to access an array or object with a `string` or `number` key type.
-8. Prevents the assignment of `undefined` to types with optional modifiers, unless the optional type is explicitly unioned with `undefined`.
-9. Incremental compilation.
+1. Simplifies importing CommonJS modules.
+2. Allows for the import of CommonJS modules as the default export, even if no `exports.default` exists.
+3. File name imports are case-sensitive.
+4. Ensures all files are modules.
+5. Allows for the import and resolution of JSON types.
+6. Adds the type `undefined` when using an index to access an array or object with a `string` or `number` key type.
+7. Prevents the assignment of `undefined` to types with optional modifiers, unless the optional type is explicitly unioned with `undefined`.
+8. Incremental compilation.
 
 ### 3. GitHub Actions
 

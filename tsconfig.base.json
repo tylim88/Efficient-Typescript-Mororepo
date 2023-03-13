@@ -24,8 +24,8 @@
         "allowSyntheticDefaultImports": true,
         "forceConsistentCasingInFileNames": true,
         "paths": {
-            "@myOrg/node": ["packages/node-lib/src/index.ts"],
-            "@myOrg/jsdom": ["packages/jsdom-lib/src/index.ts"]
+            "@myOrg/node-lib": ["packages/node-lib/src/index.ts"],
+            "@myOrg/jsdom-lib": ["packages/jsdom-lib/src/index.ts"]
         },
         "skipLibCheck": true,
         "skipDefaultLibCheck": true,

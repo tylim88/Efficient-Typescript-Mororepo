@@ -1,3 +1,3 @@
 import { z } from 'zod'
 
-export const fibonacciInput = z.object({ input: z.string() })
+export const fibonacciInput = z.object({ n: z.number() })
