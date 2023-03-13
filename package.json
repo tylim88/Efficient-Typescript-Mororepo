@@ -4,7 +4,7 @@
     "license": "MIT",
     "scripts": {
         "divider": "=============================setup======================================",
-        "setup": "(npx -y husky install || npx husky install) && npm i",
+        "setup": "npx -y husky install && npm i",
         "divider1": "=============================run many==================================",
         "dev": "nx run-many --target=dev",
         "build": "nx run-many --target=build",
