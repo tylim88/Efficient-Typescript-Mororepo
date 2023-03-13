@@ -76,7 +76,7 @@
         "@emotion/react": "^11.10.5",
         "@emotion/styled": "11.10.5",
         "@mantine/core": "^5.9.5",
-        "@mantine/hooks": "^5.9.5",
+        "@mantine/hooks": "^5.10.0",
         "@swc/helpers": "~0.4.11",
         "@trpc/client": "^10.7.0",
         "@trpc/server": "^10.7.0",
