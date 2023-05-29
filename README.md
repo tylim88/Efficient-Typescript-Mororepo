@@ -48,6 +48,7 @@ A minimal, optimal setup for modern web development projects using TypeScript.
 This readme was created with the assistance of ChatGPT.
 
 (still in development, do not use)
+(update: I no longer recommend using monorepo anymore because of the complexity it introduces)
 
 ## Technologies
 
@@ -275,7 +276,7 @@ Technologies such as Docker, ESLint, Prettier, and TypeScript are not discussed 
 
 2. Zod: There are many validation libraries available, but Zod stands out with its user-friendly API and type inference approach. It combines validation and API schema into one, making it the heart of your API design. Zod is a bit slow, however, and may not be suitable for parsing large amounts of data.
 
-3. Prisma: Prisma is the ORM with the best type safety. (That being said, I am not a fan of the schema-first approach because it adds cognitive cost (the need to learn a schema language). I prefer a code-first approach, specifically a type-first approach (using types as schemas)).
+3. Prisma: Prisma is the ORM with the best type safety. (That being said, I am not a fan of the schema-first approach because it adds cognitive cost (the need to learn a schema language). I prefer a code-first approach, specifically a type-first approach (using types as schemas)). (Update: I [no longer recommend](https://www.youtube.com/watch?v=J2j1XwZRi30) Prisma anymore, I recommend [drizzle](https://github.com/drizzle-team/drizzle-orm#readme)
 
 4. tRPC: If you are using Zod, tRPC is a good choice for your server and client because it has the best type safety. Additionally, tRPC works best in a monorepo, which fits well with the structure of this project.
 
