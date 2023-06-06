@@ -47,8 +47,8 @@ A minimal, optimal setup for modern web development projects using TypeScript.
 
 This readme was created with the assistance of ChatGPT.
 
-(still in development, do not use)
-(update: I no longer recommend using monorepo anymore because of the complexity it introduces)
+still in development, do not use
+update: I no longer recommend using monorepo anymore because of the complexity it introduces. I still agree monorepo is valueable in mamanging dependency however I do not recommend nx anymore as it actually quite complicated to work with. I recommend you to try simpler solution like npm workspace before trying tool like nx.
 
 ## Technologies
 
